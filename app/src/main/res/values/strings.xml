@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">4ZampeAndroid</string>
+    <string name="razzeBottomBar">Razze</string>
+    <string name="giochiBottomBar">Giochi</string>
+    <string name="donazioniBottomBar">Donazioni</string>
+    <string name="backDescription">Torna indietro</string>
+    <string name="topBar">topBar</string>
+    <string name="stringaVuota" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="razzeFragment">razzeFragment</string>
 </resources>
