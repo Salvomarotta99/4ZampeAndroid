@@ -5,7 +5,7 @@
     android:id="@+id/Home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4E4E4"
+    android:background="@drawable/background_dog"
     android:visibility="visible"
     tools:context=".QuizFragment">
 
@@ -16,9 +16,10 @@
         android:layout_above="@+id/QuizCV"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
+        android:background="@drawable/shape_question"
         android:text="Di che razza è ?"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -38,7 +39,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="25dp"
         android:clipToPadding="true"
-        app:cardCornerRadius="30">
+        app:cardCornerRadius="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,53 +57,52 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/QuizCV"
-        android:layout_width="400"
-        android:layout_height="250"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         app:cardBackgroundColor="@color/gray_200"
-        app:cardCornerRadius="20">
+        app:cardCornerRadius="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/button6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/quiz_next_btn"
-                android:text="@string/caneUno" /> />
+                android:text="@string/caneUno" />
 
             <Button
                 android:id="@+id/button9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/quiz_next_btn"
-                android:text="@string/caneDue" /> />
+                android:text="@string/caneDue" />
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/quiz_next_btn"
-                android:text="@string/caneTre" /> />
+                android:text="@string/caneTre" />
 
             <Button
                 android:id="@+id/button10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10"
                 android:background="@drawable/quiz_next_btn"
                 android:text="@string/caneQuattro" />
 
