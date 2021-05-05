@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/razzeItem"
+        android:id="@+id/Razze"
+
         android:enabled="true"
         android:icon="@drawable/ic_baseline_pets_24"
         android:title="@string/razzeBottomBar"/>
     <item
-        android:id="@+id/giochiItem"
+        android:id="@+id/Giochi"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_videogame_asset_24"
         android:title="@string/giochiBottomBar"/>
     <item
-        android:id="@+id/donazioniItem"
+        android:id="@+id/Donazioni"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_monetization_on_24"
         android:title="@string/donazioniBottomBar"/>
