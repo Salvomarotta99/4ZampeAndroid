@@ -7,6 +7,7 @@
     <string name="backDescription">Torna indietro</string>
     <string name="topBar">topBar</string>
     <string name="stringaVuota" />
+    <string name="stringaDomanda"> Di che razza sono ?</string>
     <string name="caneUno">Labrador</string>
     <string name="caneDue">Golden</string>
     <string name="caneTre">Pastore Tedesco</string>

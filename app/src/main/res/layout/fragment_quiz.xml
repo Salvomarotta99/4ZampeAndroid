@@ -19,7 +19,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="25dp"
-        android:text="Di che razza è ?"
+        android:text="@string/stringaDomanda"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
