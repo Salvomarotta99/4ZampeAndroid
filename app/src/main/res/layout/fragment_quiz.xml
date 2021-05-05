@@ -5,7 +5,7 @@
     android:id="@+id/Home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="empty"
+    android:background="#FFFFFF"
     android:visibility="visible"
     tools:context=".QuizFragment">
 
@@ -19,7 +19,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
-        android:background="empty"
+        android:background="@color/white"
         android:text="@string/stringaDomanda"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -85,7 +85,7 @@
                 android:text="@string/caneUno"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:backgroundTint="empty"
+
                 app:elevation="5dp" />
 
             <Button
@@ -97,7 +97,7 @@
                 android:text="@string/caneDue"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:backgroundTint="empty"
+
                 app:elevation="5dp" />
 
             <Button
@@ -109,7 +109,7 @@
                 android:text="@string/caneTre"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:backgroundTint="empty"
+
                 app:elevation="5dp" />
 
             <Button
@@ -120,7 +120,7 @@
                 android:text="@string/caneQuattro"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:backgroundTint="empty"
+
                 app:elevation="5dp" />
 
         </LinearLayout>
