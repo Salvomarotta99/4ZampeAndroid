@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">4Zampe</string>
-
     <string name="razzeBottomBar">Razze</string>
     <string name="giochiBottomBar">Giochi</string>
     <string name="donazioniBottomBar">Donazioni</string>
@@ -16,4 +15,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="razzeFragment">razzeFragment</string>
+    <string name="nomePetDetail">Nome pet</string>
+    <string name="temperamentPetDetail">Troppo bravo, carino e coccoloso</string>
+    <string name="temperamentoLabel">Temperamento:</string>
+    <string name="lifespanPetDetail">Dai tanti a 16 anni</string>
+    <string name="lifespanLabel">Aspettativa di vita:</string>
+    <string name="originLabel">Origine:</string>
+    <string name="originPetDetail">San pietrobrugo</string>
+    <string name="weightLabel">Peso</string>
+    <string name="weightPetDetail">132kg</string>
+    <string name="heightLabel">Altezza</string>
+    <string name="heightPetDetail">2213cm</string>
+    <string name="wikiLabel">Wikipedia</string>
+    <string name="wikiPetDetail">www.questolinkefake.com</string>
 </resources>
