@@ -1,4 +1,6 @@
 package com.unimib.App4ZampeAndroid;
 
-public class MemoryFragment {
+import android.app.Activity;
+
+public class MemoryFragment extends Activity {
 }
