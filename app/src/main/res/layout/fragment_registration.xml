@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Registrazione"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="110dp"
+        app:cardBackgroundColor="@color/green_200"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNameRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_btn"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:ems="20"
+            android:hint="Nome"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editMailRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_btn"
+            android:drawableLeft="@drawable/ic_baseline_local_post_office_24"
+            android:drawablePadding="2dp"
+            android:ems="20"
+            android:hint="E-mail"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPswRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_btn"
+            android:drawableLeft="@drawable/ic_baseline_security_24"
+            android:drawablePadding="2dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPswConfirmRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="230dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_btn"
+            android:drawableLeft="@drawable/ic_baseline_security_24"
+            android:drawablePadding="2dp"
+            android:ems="20"
+            android:hint="Conferma Password"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/registrati_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/quiz_btn"
+            android:elevation="4dp"
+            android:text="Registrati"
+            android:textColor="@color/black"
+
+            app:elevation="4dp" />
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
