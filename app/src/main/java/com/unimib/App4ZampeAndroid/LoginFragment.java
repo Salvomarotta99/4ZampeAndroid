@@ -1,5 +1,7 @@
 package com.unimib.App4ZampeAndroid;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.button.MaterialButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +23,8 @@ public class LoginFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    MaterialButton buttonR;
+    MaterialButton buttonL;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -58,7 +63,30 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_login, container, false);
+       buttonR = v.findViewById(R.id.registrazione_btn);
+
+        buttonL = v.findViewById(R.id.login_btn);
+        buttonL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
+        buttonR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_layout_login,
+                                new RegistrationFragment()).addToBackStack(null).commit();
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return v;
     }
+
+
+
 }
