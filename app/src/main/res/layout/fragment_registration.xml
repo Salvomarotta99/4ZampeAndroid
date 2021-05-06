@@ -30,7 +30,7 @@
         app:cardElevation="4dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editNameField"
+            android:id="@+id/editNameRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -49,7 +49,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editMailField"
+            android:id="@+id/editMailRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -69,7 +69,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPswField"
+            android:id="@+id/editPswRegistration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -89,7 +89,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPswConfirmField"
+            android:id="@+id/editPswConfirmRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -109,7 +109,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_btn"
+            android:id="@+id/registrati_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -119,7 +119,8 @@
             android:elevation="4dp"
             android:text="Registrati"
             android:textColor="@color/black"
-            app:backgroundTint="empty" />
+            app:backgroundTint="empty"
+            app:elevation="4dp" />
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
