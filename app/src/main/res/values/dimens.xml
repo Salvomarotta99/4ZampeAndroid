@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="altezzaCardGiochi">180dp</dimen>
+    <dimen name="altezzaCategorie">140dp</dimen>
+    <dimen name="larghezzaCategorie">140dp</dimen>
 </resources>

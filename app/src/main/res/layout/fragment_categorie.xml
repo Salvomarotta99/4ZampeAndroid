@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CategorieFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/categoriaCV1"
+        android:layout_width="@dimen/larghezzaCategorie"
+        android:layout_height="@dimen/altezzaCategorie"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/green_200"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/categoriaImage1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/categoria_imageview"
+                android:src="@drawable/ic_baseline_pets_24" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cani"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/categoriaCV2"
+        android:layout_width="@dimen/larghezzaCategorie"
+        android:layout_height="@dimen/altezzaCategorie"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/green_200"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/categoriaImage2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/categoria_imageview"
+                android:src="@drawable/ic_baseline_pets_24" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gatti"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/categoriaCV3"
+        android:layout_width="@dimen/larghezzaCategorie"
+        android:layout_height="@dimen/altezzaCategorie"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/green_200"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/categoriaImage3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/categoria_imageview"
+                android:src="@drawable/ic_baseline_pets_24" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cani e Gatti"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
