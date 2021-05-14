@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.unimib.App4ZampeAndroid.Adapters.BreedsAdapter;
 import com.unimib.App4ZampeAndroid.Models.Breed;
@@ -42,6 +44,13 @@ public class BreedsFragment extends Fragment {
         }
 
         BreedsAdapter breedsAdapter = new BreedsAdapter(breedList, getActivity());
+
+        breed_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), breedList.get(position).getAlt_names(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         breed_list.setAdapter(breedsAdapter);
 
