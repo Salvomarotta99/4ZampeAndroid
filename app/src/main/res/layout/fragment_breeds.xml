@@ -8,10 +8,18 @@
     tools:context=".Views.BreedsFragment">
 
 
-    <ListView
+    <!--<ListView
         android:id="@+id/breed_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="172dp" />
+        tools:layout_editor_absoluteY="172dp" />-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/breed_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="81dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

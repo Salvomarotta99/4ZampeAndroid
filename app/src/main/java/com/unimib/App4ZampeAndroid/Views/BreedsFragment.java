@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +36,8 @@ public class BreedsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        ListView breed_list = view.findViewById(R.id.breed_list);
+        //ListView breed_list = view.findViewById(R.id.breed_list);
+        RecyclerView breed_list = view.findViewById(R.id.breed_list);
 
         List<Breed> breedList = new ArrayList<Breed>();
 
@@ -43,15 +46,23 @@ public class BreedsFragment extends Fragment {
             breedList.add(new Breed("00"+i,"razza"+i,"qqqq","wwww","eeee","dddd","ddd","ssss","sd","ddsds"));
         }
 
-        BreedsAdapter breedsAdapter = new BreedsAdapter(breedList, getActivity());
+        //BreedsAdapter breedsAdapter = new BreedsAdapter(breedList, getActivity());
 
-        breed_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*breed_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(), breedList.get(position).getAlt_names(), Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
+
+        BreedsAdapter breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(Breed b) {
+                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        breed_list.setLayoutManager(new LinearLayoutManager(getContext()));
         breed_list.setAdapter(breedsAdapter);
 
 

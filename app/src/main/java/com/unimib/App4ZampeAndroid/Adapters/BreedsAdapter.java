@@ -1,53 +1,73 @@
 package com.unimib.App4ZampeAndroid.Adapters;
 
 import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.unimib.App4ZampeAndroid.Models.Breed;
 import com.unimib.App4ZampeAndroid.R;
 
 import java.util.List;
 
-public class BreedsAdapter extends BaseAdapter {
+public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsViewHolder> {
 
-    private List<Breed> breedList;
-    private Activity activity;
+    private  List<Breed> breedList;
+    private OnItemClickListener listener;
 
-    public BreedsAdapter(List<Breed> breedList, Activity activity) {
+    public interface OnItemClickListener
+    {
+        void onClick(Breed b);
+    }
+
+    public BreedsAdapter(List<Breed> breedList, OnItemClickListener listener) {
         this.breedList = breedList;
-        this.activity = activity;
+        this.listener = listener;
+    }
+    @NonNull
+    @Override
+    public BreedsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.breed_item, parent, false);
+
+        return new BreedsViewHolder(view);
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull BreedsViewHolder holder, int position) {
+        holder.bind(breedList.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
         return breedList.size();
     }
 
-    @Override
-    public Breed getItem(int position) {
-        return breedList.get(position);
-    }
+    public class BreedsViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView nameTextView;
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        if (convertView == null) {
-            convertView = activity.getLayoutInflater().inflate(R.layout.breed_item, parent, false);
+        public BreedsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            nameTextView = itemView.findViewById(R.id.breed_name);
         }
 
-        ((TextView) convertView.findViewById(R.id.breed_name))
-                .setText(getItem(position).getName());
-        return convertView;
-    }
+        public void bind(Breed b)
+        {
+            nameTextView.setText(b.getName());
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(b);
+                }
+            });
+        }
+    }
 }
