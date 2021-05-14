@@ -14,6 +14,20 @@ public class Breed {
     private String height;
     private ImageBreed image;
 
+    public Breed(String id, String name, String temperament, String life_span, String alt_names, String wikipedia_url, String origin, String country_code, String weight, String height) {
+        this.id = id;
+        this.name = name;
+        this.temperament = temperament;
+        this.life_span = life_span;
+        this.alt_names = alt_names;
+        this.wikipedia_url = wikipedia_url;
+        this.origin = origin;
+        this.country_code = country_code;
+        this.weight = weight;
+        this.height = height;
+    }
+
+
     public String getId() {
         return id;
     }

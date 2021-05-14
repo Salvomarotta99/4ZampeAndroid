@@ -19,7 +19,7 @@ public class BreedsRepository {
     }
 
     //private WebService thedoapi = WebService.getInstance();
-
+/*
     public LiveData<List<Breed>> getBreedsList(String id) {
 
         final MutableLiveData<List<Breed>> breedsData =
@@ -28,5 +28,5 @@ public class BreedsRepository {
                // thedogapi.getBreedsList(id)
         );
         return breedsData;
-    }
+    }*/
 }

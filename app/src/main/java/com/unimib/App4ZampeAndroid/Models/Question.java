@@ -1,14 +1,12 @@
 package com.unimib.App4ZampeAndroid.Models;
 
-@TABLE = "question"
+
 public class Question {
 
-    @Entity
-    @Column = "id"
     private String id;
 
     private ImageBreed image;
-    private Answer correct_answer;
+    private String correct_answer;
 
     public String getId() {
         return id;
