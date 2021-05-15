@@ -85,7 +85,7 @@ public class BreedsFragment extends Fragment {
         BreedsAdapter breedsAdapter = new BreedsAdapter(lcs, new BreedsAdapter.OnItemClickListener() {
             @Override
             public void onClick(Breed b) {
-                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), b.getLife_span(), Toast.LENGTH_SHORT).show();
             }
         });
         breed_list.setLayoutManager(new LinearLayoutManager(getContext()));

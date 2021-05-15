@@ -52,16 +52,18 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsView
     public class BreedsViewHolder extends RecyclerView.ViewHolder
     {
         TextView nameTextView;
+        TextView temperamentTextView;
 
         public BreedsViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.breed_name);
+            temperamentTextView = itemView.findViewById(R.id.breed_temperament);
         }
 
         public void bind(Breed b)
         {
             nameTextView.setText(b.getName());
-
+            temperamentTextView.setText(b.getTemperament());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
