@@ -8,24 +8,31 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.JsonReader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.unimib.App4ZampeAndroid.Adapters.BreedsAdapter;
 import com.unimib.App4ZampeAndroid.Models.Breed;
 import com.unimib.App4ZampeAndroid.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class BreedsFragment extends Fragment {
 
+    public static final String TAG = "BreedsFragment";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,9 +61,28 @@ public class BreedsFragment extends Fragment {
                 Toast.makeText(getActivity(), breedList.get(position).getAlt_names(), Toast.LENGTH_LONG).show();
             }
         });*/
+        InputStream fileInputStream = null;
+        JsonReader jsonReader = null;
+        try {
+                fileInputStream = getActivity().getAssets().open("breed_list.json");
+                jsonReader = new JsonReader(new InputStreamReader(fileInputStream, "UTF-8"));
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 
-        BreedsAdapter breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
+        Type collectionType = new TypeToken<List<Breed>>(){}.getType();
+        List<Breed> lcs = (List<Breed>) new Gson()
+                .fromJson( bufferedReader , collectionType);
+
+        for (int i = 0; i < lcs.size(); i++)
+        {
+            Log.d(TAG, lcs.get(i).getName()+", "+lcs.get(i).getTemperament());
+        }
+
+        BreedsAdapter breedsAdapter = new BreedsAdapter(lcs, new BreedsAdapter.OnItemClickListener() {
             @Override
             public void onClick(Breed b) {
                 Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
@@ -64,7 +90,6 @@ public class BreedsFragment extends Fragment {
         });
         breed_list.setLayoutManager(new LinearLayoutManager(getContext()));
         breed_list.setAdapter(breedsAdapter);
-
 
     }
 }

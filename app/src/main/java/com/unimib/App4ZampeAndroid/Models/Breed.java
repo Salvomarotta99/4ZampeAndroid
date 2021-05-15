@@ -10,8 +10,8 @@ public class Breed {
     private String wikipedia_url;
     private String origin;
     private String country_code;
-    private String weight;
-    private String height;
+    private Object weight;
+    private Object height;
     private ImageBreed image;
 
     public Breed(String id, String name, String temperament, String life_span, String alt_names, String wikipedia_url, String origin, String country_code, String weight, String height) {
@@ -88,7 +88,7 @@ public class Breed {
         this.country_code = country_code;
     }
 
-    public String getWeight() {
+    public Object getWeight() {
         return weight;
     }
 
@@ -96,7 +96,7 @@ public class Breed {
         this.weight = weight;
     }
 
-    public String getHeight() {
+    public Object getHeight() {
         return height;
     }
 
