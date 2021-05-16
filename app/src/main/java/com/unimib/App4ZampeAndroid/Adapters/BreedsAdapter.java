@@ -46,7 +46,9 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsView
 
     @Override
     public int getItemCount() {
+        if(breedList != null)
         return breedList.size();
+        return 0;
     }
 
     public class BreedsViewHolder extends RecyclerView.ViewHolder
