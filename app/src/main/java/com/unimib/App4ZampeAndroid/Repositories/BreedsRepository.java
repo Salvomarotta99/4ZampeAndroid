@@ -3,6 +3,8 @@ package com.unimib.App4ZampeAndroid.Repositories;
 
 
 import com.unimib.App4ZampeAndroid.Models.Breed;
+import com.unimib.App4ZampeAndroid.Models.ImageBreed;
+import com.unimib.App4ZampeAndroid.Services.BreedImageService;
 import com.unimib.App4ZampeAndroid.Services.BreedsListService;
 import com.unimib.App4ZampeAndroid.Services.ServiceLocator;
 import com.unimib.App4ZampeAndroid.Utils.Costants;
@@ -16,7 +18,7 @@ import retrofit2.Response;
 public class BreedsRepository implements IBreedsRepository{
 
     private BreedsListService breedsListService;
-    private  BreedsCallback breedsCallback;
+    private BreedsCallback breedsCallback;
 
     public BreedsRepository(BreedsCallback breedsCallback) {
         this.breedsListService = ServiceLocator.getInstance().getBreedsWithRetrofit();
@@ -42,4 +44,5 @@ public class BreedsRepository implements IBreedsRepository{
             }
         });
     }
+
 }

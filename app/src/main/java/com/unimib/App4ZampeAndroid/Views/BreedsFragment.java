@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.unimib.App4ZampeAndroid.Adapters.BreedsAdapter;
 import com.unimib.App4ZampeAndroid.Models.Breed;
+import com.unimib.App4ZampeAndroid.Models.ImageBreed;
 import com.unimib.App4ZampeAndroid.R;
 import com.unimib.App4ZampeAndroid.Repositories.BreedsCallback;
 import com.unimib.App4ZampeAndroid.Repositories.BreedsRepository;
@@ -32,12 +33,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BreedsFragment extends Fragment implements BreedsCallback {
+public class BreedsFragment extends Fragment implements BreedsCallback{
 
     public static final String TAG = "BreedsFragment";
 
     private BreedsRepository breedsRepository;
     private List<Breed> breedList;
+    private ImageBreed imageBreed;
     private BreedsAdapter breedsAdapter;
 
     @Override
@@ -55,6 +57,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback {
 
         breedList = new ArrayList<>();
         breedsRepository.fetchBreeds();
+
 
         //ListView breed_list = view.findViewById(R.id.breed_list);
         RecyclerView breed_list = view.findViewById(R.id.breed_list);
@@ -98,8 +101,9 @@ public class BreedsFragment extends Fragment implements BreedsCallback {
         breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
             @Override
             public void onClick(Breed b) {
-                Toast.makeText(getActivity(), b.getLife_span(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
             }
+
         });
         breed_list.setLayoutManager(new LinearLayoutManager(getContext()));
         breed_list.setAdapter(breedsAdapter);
@@ -116,4 +120,6 @@ public class BreedsFragment extends Fragment implements BreedsCallback {
     public void onFailure(String msg) {
 
     }
+
+
 }

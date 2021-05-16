@@ -20,6 +20,15 @@ public class ServiceLocator {
         return instance;
     }
 
+    public BreedImageService getImagesBreedsWithRetrofit()
+    {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Costants.THEDOG_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return retrofit.create(BreedImageService.class);
+    }
+
     public BreedsListService getBreedsWithRetrofit()
     {
         Retrofit retrofit = new Retrofit.Builder()
