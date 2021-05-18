@@ -9,10 +9,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/categoriaCV1"
-        android:layout_width="@dimen/larghezzaCategorie"
-        android:layout_height="@dimen/altezzaCategorie"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="216dp"
         android:backgroundTint="@color/green_200"
         app:cardCornerRadius="30dp"
         app:cardElevation="4dp">
@@ -24,14 +25,14 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/categoriaImage1"
+            <Button
+                android:id="@+id/btnDog"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/categoria_imageview"
-                android:src="@drawable/ic_baseline_pets_24" />
-
+                android:layout_height="70dp"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Vai" />
         </LinearLayout>
 
         <TextView
@@ -48,10 +49,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/categoriaCV2"
-        android:layout_width="@dimen/larghezzaCategorie"
-        android:layout_height="@dimen/altezzaCategorie"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="217dp"
+        android:layout_marginTop="213dp"
+        android:layout_marginEnd="13dp"
         android:backgroundTint="@color/green_200"
         app:cardCornerRadius="30dp"
         app:cardElevation="4dp">
@@ -63,14 +68,14 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/categoriaImage2"
+            <Button
+                android:id="@+id/btnCat"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/categoria_imageview"
-                android:src="@drawable/ic_baseline_pets_24" />
-
+                android:layout_height="70dp"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Vai" />
         </LinearLayout>
 
         <TextView
@@ -87,10 +92,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/categoriaCV3"
-        android:layout_width="@dimen/larghezzaCategorie"
-        android:layout_height="@dimen/altezzaCategorie"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="300dp"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="391dp"
+        android:layout_marginEnd="217dp"
         android:backgroundTint="@color/green_200"
         app:cardCornerRadius="30dp"
         app:cardElevation="4dp">
@@ -102,14 +111,14 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/categoriaImage3"
+            <Button
+                android:id="@+id/btnDogCat"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/categoria_imageview"
-                android:src="@drawable/ic_baseline_pets_24" />
-
+                android:layout_height="76dp"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Vai" />
         </LinearLayout>
 
 

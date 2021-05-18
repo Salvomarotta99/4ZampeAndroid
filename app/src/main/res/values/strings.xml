@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">4Zampe</string>
     <string name="razzeBottomBar">Razze</string>
-    <string name="giochiBottomBar">Giochi</string>
+    <string name="giochiBottomBar">Quiz</string>
     <string name="donazioniBottomBar">Donazioni</string>
     <string name="backDescription">Torna indietro</string>
     <string name="topBar">topBar</string>

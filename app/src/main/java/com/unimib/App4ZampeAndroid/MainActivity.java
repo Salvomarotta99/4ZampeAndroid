@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                         case R.id.Giochi:
-                            selectedFragment = new QuizFragment();
+                            selectedFragment = new CategorieFragment();
                             break;
                     }
 

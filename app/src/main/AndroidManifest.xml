@@ -11,6 +11,9 @@
         android:theme="@style/Theme.4ZampeAndroid">
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".DogActivity" />
+        <activity android:name=".DogCatActivity" />
+        <activity android:name=".CatActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

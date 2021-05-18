@@ -63,17 +63,7 @@
 
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/green_200"
-        app:cardCornerRadius="30dp">
-
-
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="179dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"/>
-    </androidx.cardview.widget.CardView>
+        app:cardCornerRadius="30dp"/>
 
 
 
