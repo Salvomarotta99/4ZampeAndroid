@@ -48,7 +48,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        breedsRepository = new BreedsRepository(this);
+        breedsRepository = new BreedsRepository(this, requireActivity().getApplication());
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_breeds, container, false);
@@ -117,7 +117,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     }
 
     @Override
-    public void onResponse(List<Breed> breedList) {
+    public void onResponse(List<Breed> breedList, long lastUpdate) {
         this.breedList.addAll(breedList);
         breedsAdapter.notifyDataSetChanged();
     }

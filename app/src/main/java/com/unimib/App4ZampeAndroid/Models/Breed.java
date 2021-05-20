@@ -1,8 +1,16 @@
 package com.unimib.App4ZampeAndroid.Models;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "breeds")
 public class Breed {
 
-    private String id;
+
+    @PrimaryKey
+    @NonNull private String id;
+
     private String name;
     private String temperament;
     private String life_span;
@@ -14,7 +22,7 @@ public class Breed {
     private Object height;
     private ImageBreed image;
 
-    public Breed(String id, String name, String temperament, String life_span, String alt_names, String wikipedia_url, String origin, String country_code, String weight, String height) {
+    public Breed(String id, String name, String temperament, String life_span, String alt_names, String wikipedia_url, String origin, String country_code, Object weight, Object height) {
         this.id = id;
         this.name = name;
         this.temperament = temperament;

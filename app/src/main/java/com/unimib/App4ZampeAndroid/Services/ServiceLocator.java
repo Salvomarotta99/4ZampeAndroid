@@ -1,5 +1,9 @@
 package com.unimib.App4ZampeAndroid.Services;
 
+import android.app.Application;
+
+import com.unimib.App4ZampeAndroid.Database.BreedRoomDatabase;
+import com.unimib.App4ZampeAndroid.Models.Breed;
 import com.unimib.App4ZampeAndroid.Utils.Costants;
 
 import retrofit2.Retrofit;
@@ -20,14 +24,6 @@ public class ServiceLocator {
         return instance;
     }
 
-    public BreedImageService getImagesBreedsWithRetrofit()
-    {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Costants.THEDOG_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        return retrofit.create(BreedImageService.class);
-    }
 
     public BreedsListService getBreedsWithRetrofit()
     {
@@ -36,5 +32,10 @@ public class ServiceLocator {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(BreedsListService.class);
+    }
+
+    public BreedRoomDatabase getBreedsDao(Application application)
+    {
+        return BreedRoomDatabase.getDatabase(application);
     }
 }
