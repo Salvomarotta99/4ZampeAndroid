@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,13 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.JsonReader;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.unimib.App4ZampeAndroid.Adapters.BreedsAdapter;
+import com.unimib.App4ZampeAndroid.MainActivity;
 import com.unimib.App4ZampeAndroid.Models.Breed;
 import com.unimib.App4ZampeAndroid.Models.ImageBreed;
 import com.unimib.App4ZampeAndroid.R;
@@ -40,6 +47,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
 
     private BreedsRepository breedsRepository;
     private List<Breed> breedList;
+    private List<Breed> breedListAll;
     private ImageBreed imageBreed;
     private BreedsAdapter breedsAdapter;
 
@@ -47,7 +55,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        setHasOptionsMenu(true); // Add this!
         breedsRepository = new BreedsRepository(this, requireActivity().getApplication());
 
         // Inflate the layout for this fragment
@@ -116,6 +124,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
 
     }
 
+
     @Override
     public void onResponse(List<Breed> breedList, long lastUpdate) {
         this.breedList.addAll(breedList);
@@ -126,6 +135,34 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     public void onFailure(String msg) {
 
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+
+        inflater.inflate(R.menu.main_menu, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        SearchView searchView = (SearchView) item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                breedsAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+    }
+
+
 
 
 }
