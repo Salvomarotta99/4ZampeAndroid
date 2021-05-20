@@ -59,7 +59,19 @@ public class BreedsRepository implements IBreedsRepository{
                     breedsCallback.onFailure(t.getMessage());
                 }
             });
+        } else {
+            readDataFromDatabase();
         }
+    }
+
+    private void readDataFromDatabase() {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                breedsCallback.onResponse(breedDao.getAllBreed(), lastUpdate);
+            }
+        };
+        new Thread(runnable).start();
     }
 
     private void saveDataInDatabase(List<Breed> breedList) {
