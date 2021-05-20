@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.fragment.app.Fragment;
 
 
 public class BreedsFragment extends Fragment implements BreedsCallback{
@@ -41,6 +42,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     private List<Breed> breedList;
     private ImageBreed imageBreed;
     private BreedsAdapter breedsAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,8 +103,11 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
         breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
             @Override
             public void onClick(Breed b) {
+                Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
                 Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
-
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_layout,
+                                selectedFragment).commit();
             }
 
         });

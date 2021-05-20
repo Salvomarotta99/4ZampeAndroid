@@ -49,7 +49,7 @@
                     android:scaleType="centerCrop" />
 
                 <TextView
-                    android:id="@+id/nomePetDetail"
+                    android:id="@+id/namePetDetail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
@@ -103,7 +103,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/temperamentoPetDetail"
+                    android:id="@+id/temperamentPetDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/temperamentPetDetail"
@@ -150,6 +150,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/weightPetDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/weightPetDetail"
@@ -165,6 +166,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/heightPetDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/heightPetDetail"
@@ -180,6 +182,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/wikiPetDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/wikiPetDetail"
