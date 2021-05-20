@@ -102,6 +102,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
             @Override
             public void onClick(Breed b) {
                 Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+
             }
 
         });

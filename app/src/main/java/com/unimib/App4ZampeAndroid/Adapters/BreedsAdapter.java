@@ -15,6 +15,7 @@ import com.unimib.App4ZampeAndroid.Models.ImageBreed;
 import com.unimib.App4ZampeAndroid.R;
 import com.unimib.App4ZampeAndroid.Repositories.BreedsRepository;
 
+import java.net.URLEncoder;
 import java.util.List;
 
 public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsViewHolder> {
@@ -80,6 +81,5 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsView
             });
         }
     }
-
 
 }

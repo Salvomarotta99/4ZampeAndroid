@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">4Zampe</string>
+    <string name="breed_nameText"></string>
+    <string name="breed_nameTemperament"></string>
+</resources>

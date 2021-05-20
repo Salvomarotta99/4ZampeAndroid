@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">4Zampe</string>
+    <string name="app_name" translatable="false">4Zampe</string>
     <string name="razzeBottomBar">Razze</string>
     <string name="giochiBottomBar">Giochi</string>
     <string name="donazioniBottomBar">Donazioni</string>
@@ -30,4 +30,6 @@
     <string name="wikiPetDetail">www.questolinkefake.com</string>
     <string name="breedLabel">Razza:</string>
     <string name="temperamentLabel">Temperamento:</string>
+    <string name="breed_nameText">test</string>
+    <string name="breed_nameTemperament">test</string>
 </resources>
