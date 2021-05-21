@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -119,7 +120,7 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
             }
 
         });
-        breed_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
         breed_list.setAdapter(breedsAdapter);
 
     }

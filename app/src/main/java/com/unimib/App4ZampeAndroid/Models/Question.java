@@ -7,6 +7,7 @@ public class Question {
 
     private ImageBreed image;
     private String correct_answer;
+    private String name;
 
     public String getId() {
         return id;

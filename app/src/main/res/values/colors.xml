@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green_700">#387002</color>
-    <color name="green_500">#689f38</color>
-    <color name="green_200">#99d066</color>
+    <color name="green_700">#005005</color>
+    <color name="green_500">#2e7d32</color>
+    <color name="green_200">#60ad5e</color>
+    <color name="grey_bg">#F6F6F6</color>
+
+    <color name="emerald_500">#046307</color>
+
+    <color name="navy_500">#000080</color>
 
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

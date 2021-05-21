@@ -5,15 +5,8 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/navy_500"
     tools:context=".Views.BreedsFragment">
-
-
-    <!--<ListView
-        android:id="@+id/breed_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="172dp" />-->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,5 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="81dp" />
+        tools:layout_editor_absoluteY="81dp"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

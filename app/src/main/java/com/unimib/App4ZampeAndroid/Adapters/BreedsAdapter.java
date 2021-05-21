@@ -72,14 +72,12 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsView
         public BreedsViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.breed_name);
-            temperamentTextView = itemView.findViewById(R.id.breed_temperament);
             imageViewBreed = itemView.findViewById(R.id.breed_image);
         }
 
         public void bind(Breed b)
         {
             nameTextView.setText(b.getName());
-            temperamentTextView.setText(b.getTemperament());
             Picasso.get().load(b.getImage().getUrl()).into(imageViewBreed);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
