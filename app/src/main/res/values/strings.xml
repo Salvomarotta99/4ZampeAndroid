@@ -33,4 +33,7 @@
     <string name="breed_nameText">test</string>
     <string name="breed_nameTemperament">test</string>
     <string name="action_search">Search</string>
+    <string name="cane">Cani</string>
+    <string name="gatti">Gatti</string>
+    <string name="cani">Cani</string>
 </resources>
