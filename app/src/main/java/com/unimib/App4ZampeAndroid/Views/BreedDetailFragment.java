@@ -71,8 +71,16 @@ public class BreedDetailFragment extends Fragment {
         namePetDetail.setText(b.getName());
         temperamentPetDetail.setText(b.getTemperament());
         lifespanPetDetail.setText(b.getLife_span());
-        weightPetDetail.setText(b.getWeight().toString());
-        heightPetDetail.setText(b.getHeight().toString());
+        if(b.getWeight() != null){
+            weightPetDetail.setText(b.getWeight().toString());
+        }else {
+            weightPetDetail.setText("Non disponibile...");
+        }
+        if(b.getHeight() != null){
+            heightPetDetail.setText(b.getHeight().toString());
+        }else {
+            heightPetDetail.setText("Non disponibile...");
+        }
         wikiPetDetail.setText(b.getWikipedia_url());
 
     }

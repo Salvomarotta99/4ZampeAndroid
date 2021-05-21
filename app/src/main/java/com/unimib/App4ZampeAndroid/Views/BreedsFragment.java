@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,8 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.unimib.App4ZampeAndroid.Adapters.BreedsAdapter;
@@ -53,11 +57,13 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     private BreedsAdapter breedsAdapter;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true); // Add this!
         breedsRepository = new BreedsRepository(this, requireActivity().getApplication());
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_breeds, container, false);
@@ -66,49 +72,75 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        breedList = new ArrayList<>();
-        breedsRepository.fetchBreeds();
-
-
-        //ListView breed_list = view.findViewById(R.id.breed_list);
+        ProgressBar loader = getView().findViewById(R.id.loading);
         RecyclerView breed_list = view.findViewById(R.id.breed_list);
 
-        //List<Breed> breedList = new ArrayList<Breed>();
+        loader.setVisibility(view.VISIBLE);
+        breed_list.setVisibility(view.GONE);
 
-        /*for (int i = 0; i < 10; i++)
-        {
-            breedList.add(new Breed("00"+i,"razza"+i,"qqqq","wwww","eeee","dddd","ddd","ssss","sd","ddsds"));
-        }*/
-
-        //BreedsAdapter breedsAdapter = new BreedsAdapter(breedList, getActivity());
-
-        /*breed_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        TabLayout tabLayout = view.findViewById(R.id.tabView);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), breedList.get(position).getAlt_names(), Toast.LENGTH_LONG).show();
+            public void onTabSelected(TabLayout.Tab tab) {
+                System.out.println(tab.getPosition());
+                switch(tab.getPosition()){
+                    case 0:
+                        loader.setVisibility(view.VISIBLE);
+                        breed_list.setVisibility(view.GONE);
+                        breedList = new ArrayList<>();
+                        breedsRepository.fetchBreedsDog();
+                        breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
+                            @Override
+                            public void onClick(Breed b) {
+                                Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
+                                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+                                getActivity().getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.fragment_layout,
+                                                selectedFragment).commit();
+                            }
+
+                        });
+                        breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
+                        breed_list.setAdapter(breedsAdapter);
+                        breedsAdapter.notifyDataSetChanged();
+
+                    case 1:
+                        loader.setVisibility(view.VISIBLE);
+                        breed_list.setVisibility(view.GONE);
+                        breedList = new ArrayList<>();
+                        breedsRepository.fetchBreedsCat();
+                        breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
+                            @Override
+                            public void onClick(Breed b) {
+                                Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
+                                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+                                getActivity().getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.fragment_layout,
+                                                selectedFragment).commit();
+                            }
+
+                        });
+                        breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
+                        breed_list.setAdapter(breedsAdapter);
+                        breedsAdapter.notifyDataSetChanged();
+
+                }
             }
-        });*/
-        InputStream fileInputStream = null;
-        JsonReader jsonReader = null;
-        try {
-                fileInputStream = getActivity().getAssets().open("breed_list.json");
-                jsonReader = new JsonReader(new InputStreamReader(fileInputStream, "UTF-8"));
-        }catch (IOException e)
-        {
-            e.printStackTrace();
-        }
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-        Type collectionType = new TypeToken<List<Breed>>(){}.getType();
-        List<Breed> lcs = (List<Breed>) new Gson()
-                .fromJson( bufferedReader , collectionType);
+            }
 
-        for (int i = 0; i < lcs.size(); i++)
-        {
-            Log.d(TAG, lcs.get(i).getName()+", "+lcs.get(i).getTemperament());
-        }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+
+        
+        breedList = new ArrayList<>();
+        breedsRepository.fetchBreedsDog();
         breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
             @Override
             public void onClick(Breed b) {
@@ -123,18 +155,23 @@ public class BreedsFragment extends Fragment implements BreedsCallback{
         breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
         breed_list.setAdapter(breedsAdapter);
 
+
     }
 
 
     @Override
     public void onResponse(List<Breed> breedList, long lastUpdate) {
+        this.breedList.clear();
         this.breedList.addAll(breedList);
         breedsAdapter.notifyDataSetChanged();
+        this.getView().findViewById(R.id.loading).setVisibility(getView().GONE);
+        this.getView().findViewById(R.id.breed_list).setVisibility(getView().VISIBLE);
     }
 
     @Override
     public void onFailure(String msg) {
-
+        this.getView().findViewById(R.id.loading).setVisibility(getView().GONE);
+        this.getView().findViewById(R.id.breed_list).setVisibility(getView().VISIBLE);
     }
 
     @Override

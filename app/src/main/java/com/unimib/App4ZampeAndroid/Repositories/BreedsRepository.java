@@ -21,27 +21,32 @@ import retrofit2.Response;
 
 public class BreedsRepository implements IBreedsRepository{
 
-    private BreedsListService breedsListService;
+    private BreedsListService breedsListDogService;
+    private BreedsListService breedsListCatService;
     private BreedsCallback breedsCallback;
-    private final BreedDao breedDao;
+    private final BreedDao breedDaoDog;
+    private final BreedDao breedDaoCat;
     private long lastUpdate;
 
     public BreedsRepository(BreedsCallback breedsCallback, Application application) {
-        this.breedsListService = ServiceLocator.getInstance().getBreedsWithRetrofit();
+        this.breedsListDogService = ServiceLocator.getInstance().getBreedsDogsWithRetrofit();
+        this.breedsListCatService = ServiceLocator.getInstance().getBreedsCatsWithRetrofit();
         this.breedsCallback = breedsCallback;
-        BreedRoomDatabase db = ServiceLocator.getInstance().getBreedsDao(application);
-        this.breedDao = db.breedDao();
+        BreedRoomDatabase dbDog = ServiceLocator.getInstance().getBreedsDaoDog(application);
+        this.breedDaoDog = dbDog.breedDao();
+        BreedRoomDatabase dbCat = ServiceLocator.getInstance().getBreedsDaoCat(application);
+        this.breedDaoCat = dbCat.breedDao();
     }
 
 
     @Override
-    public void fetchBreeds() {
+    public void fetchBreedsDog() {
 
         long currentTime = System.currentTimeMillis();
 
         if(currentTime - lastUpdate > 1) {
 
-            Call<List<Breed>> call = breedsListService.getBreedsList(Costants.THEDOG_API_KEY);
+            Call<List<Breed>> call = breedsListDogService.getBreedsList(Costants.THEDOG_API_KEY);
 
             call.enqueue(new Callback<List<Breed>>() {
                 @Override
@@ -49,7 +54,7 @@ public class BreedsRepository implements IBreedsRepository{
                     if (response.body() != null && response.isSuccessful()) {
                         lastUpdate = System.currentTimeMillis();
                         List<Breed> breedList = response.body();
-                        saveDataInDatabase(breedList);
+                        saveDataInDatabaseDog(breedList);
                         breedsCallback.onResponse(response.body(), lastUpdate);
                     }
                 }
@@ -60,26 +65,77 @@ public class BreedsRepository implements IBreedsRepository{
                 }
             });
         } else {
-            readDataFromDatabase();
+            readDataFromDatabaseDog();
         }
     }
 
-    private void readDataFromDatabase() {
+    @Override
+    public void fetchBreedsCat() {
+
+        long currentTime = System.currentTimeMillis();
+
+        if(currentTime - lastUpdate > 1) {
+
+            Call<List<Breed>> call = breedsListCatService.getBreedsList(Costants.THECAT_API_KEY);
+
+            call.enqueue(new Callback<List<Breed>>() {
+                @Override
+                public void onResponse(Call<List<Breed>> call, Response<List<Breed>> response) {
+                    if (response.body() != null && response.isSuccessful()) {
+                        lastUpdate = System.currentTimeMillis();
+                        List<Breed> breedList = response.body();
+                        saveDataInDatabaseCat(breedList);
+                        breedsCallback.onResponse(response.body(), lastUpdate);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Breed>> call, Throwable t) {
+                    breedsCallback.onFailure(t.getMessage());
+                }
+            });
+        } else {
+            readDataFromDatabaseCat();
+        }
+    }
+
+    private void readDataFromDatabaseDog() {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                breedsCallback.onResponse(breedDao.getAllBreed(), lastUpdate);
+                breedsCallback.onResponse(breedDaoDog.getAllBreed(), lastUpdate);
             }
         };
         new Thread(runnable).start();
     }
 
-    private void saveDataInDatabase(List<Breed> breedList) {
+    private void saveDataInDatabaseDog(List<Breed> breedList) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                breedDao.deleteAll();
-                breedDao.insertBreeds(breedList);
+                breedDaoDog.deleteAll();
+                breedDaoDog.insertBreeds(breedList);
+            }
+        };
+        new Thread(runnable).start();
+    }
+
+    private void readDataFromDatabaseCat() {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                breedsCallback.onResponse(breedDaoDog.getAllBreed(), lastUpdate);
+            }
+        };
+        new Thread(runnable).start();
+    }
+
+    private void saveDataInDatabaseCat(List<Breed> breedList) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                breedDaoCat.deleteAll();
+                breedDaoCat.insertBreeds(breedList);
             }
         };
         new Thread(runnable).start();
