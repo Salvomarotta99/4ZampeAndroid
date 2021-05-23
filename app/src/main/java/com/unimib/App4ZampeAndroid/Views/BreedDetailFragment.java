@@ -34,17 +34,6 @@ public class BreedDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        // This callback will only be called when MyFragment is at least Started.
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-            @Override
-            public void handleOnBackPressed() {
-                // Handle the back button event
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
-
-        // The callback can be enabled or disabled here or in handleOnBackPressed()
-
         super.onCreate(savedInstanceState);
 
     }

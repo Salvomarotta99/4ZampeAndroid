@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.unimib.App4ZampeAndroid.Views.BreedsFragment;
+import com.unimib.App4ZampeAndroid.Views.PagerBreedsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
         //Setting Home fragment as main
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,new BreedsFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,new PagerBreedsFragment()).commit();
 
     }
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
                     switch(item.getItemId()){
                         case R.id.Razze:
-                            selectedFragment = new BreedsFragment();
+                            selectedFragment = new PagerBreedsFragment();
                             break;
 
                         case R.id.Donazioni:

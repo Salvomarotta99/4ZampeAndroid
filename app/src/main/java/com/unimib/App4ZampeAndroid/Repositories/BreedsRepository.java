@@ -4,6 +4,8 @@ package com.unimib.App4ZampeAndroid.Repositories;
 
 import android.app.Application;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.unimib.App4ZampeAndroid.Dao.BreedDao;
 import com.unimib.App4ZampeAndroid.Database.BreedRoomDatabase;
 import com.unimib.App4ZampeAndroid.Models.Breed;
@@ -13,6 +15,7 @@ import com.unimib.App4ZampeAndroid.Services.BreedsListService;
 import com.unimib.App4ZampeAndroid.Services.ServiceLocator;
 import com.unimib.App4ZampeAndroid.Utils.Costants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,24 +26,27 @@ public class BreedsRepository implements IBreedsRepository{
 
     private BreedsListService breedsListDogService;
     private BreedsListService breedsListCatService;
-    private BreedsCallback breedsCallback;
     private final BreedDao breedDaoDog;
     private final BreedDao breedDaoCat;
     private long lastUpdate;
+    private MutableLiveData<List<Breed>> breedsDogLiveData;
+    private MutableLiveData<List<Breed>> breedsCatLiveData;
 
-    public BreedsRepository(BreedsCallback breedsCallback, Application application) {
+    public BreedsRepository(Application application, long lastUpdate) {
         this.breedsListDogService = ServiceLocator.getInstance().getBreedsDogsWithRetrofit();
         this.breedsListCatService = ServiceLocator.getInstance().getBreedsCatsWithRetrofit();
-        this.breedsCallback = breedsCallback;
         BreedRoomDatabase dbDog = ServiceLocator.getInstance().getBreedsDaoDog(application);
         this.breedDaoDog = dbDog.breedDao();
         BreedRoomDatabase dbCat = ServiceLocator.getInstance().getBreedsDaoCat(application);
         this.breedDaoCat = dbCat.breedDao();
+        this.lastUpdate = lastUpdate;
+        this.breedsDogLiveData = new MutableLiveData<>();
+        this.breedsCatLiveData = new MutableLiveData<>();
     }
 
 
     @Override
-    public void fetchBreedsDog() {
+    public MutableLiveData<List<Breed>> fetchBreedsDog() {
 
         long currentTime = System.currentTimeMillis();
 
@@ -55,22 +61,24 @@ public class BreedsRepository implements IBreedsRepository{
                         lastUpdate = System.currentTimeMillis();
                         List<Breed> breedList = response.body();
                         saveDataInDatabaseDog(breedList);
-                        breedsCallback.onResponse(response.body(), lastUpdate);
+                        breedsDogLiveData.postValue(response.body());
+
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<Breed>> call, Throwable t) {
-                    breedsCallback.onFailure(t.getMessage());
+                    //Error
                 }
             });
         } else {
             readDataFromDatabaseDog();
         }
+        return breedsDogLiveData;
     }
 
     @Override
-    public void fetchBreedsCat() {
+    public  MutableLiveData<List<Breed>> fetchBreedsCat() {
 
         long currentTime = System.currentTimeMillis();
 
@@ -85,25 +93,27 @@ public class BreedsRepository implements IBreedsRepository{
                         lastUpdate = System.currentTimeMillis();
                         List<Breed> breedList = response.body();
                         saveDataInDatabaseCat(breedList);
-                        breedsCallback.onResponse(response.body(), lastUpdate);
+                        breedsCatLiveData.postValue(response.body());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<Breed>> call, Throwable t) {
-                    breedsCallback.onFailure(t.getMessage());
+                   //Error
                 }
             });
         } else {
             readDataFromDatabaseCat();
         }
+        return breedsCatLiveData;
     }
 
     private void readDataFromDatabaseDog() {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                breedsCallback.onResponse(breedDaoDog.getAllBreed(), lastUpdate);
+                List<Breed> breedList = breedDaoDog.getAllBreed();
+                breedsDogLiveData.postValue(breedList);
             }
         };
         new Thread(runnable).start();
@@ -124,7 +134,8 @@ public class BreedsRepository implements IBreedsRepository{
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                breedsCallback.onResponse(breedDaoDog.getAllBreed(), lastUpdate);
+                List<Breed> breedList = breedDaoCat.getAllBreed();
+                breedsCatLiveData.postValue(breedList);
             }
         };
         new Thread(runnable).start();

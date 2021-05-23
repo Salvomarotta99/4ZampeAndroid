@@ -1,63 +1,38 @@
 package com.unimib.App4ZampeAndroid.Views;
 
-import android.app.ActionBar;
 import android.os.Bundle;
-
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.widget.ContentLoadingProgressBar;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.JsonReader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.material.progressindicator.CircularProgressIndicator;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.unimib.App4ZampeAndroid.Adapters.BreedsAdapter;
-import com.unimib.App4ZampeAndroid.MainActivity;
 import com.unimib.App4ZampeAndroid.Models.Breed;
 import com.unimib.App4ZampeAndroid.Models.ImageBreed;
 import com.unimib.App4ZampeAndroid.R;
-import com.unimib.App4ZampeAndroid.Repositories.BreedsCallback;
 import com.unimib.App4ZampeAndroid.Repositories.BreedsRepository;
 import com.unimib.App4ZampeAndroid.ViewModels.BreedsViewModel;
 import com.unimib.App4ZampeAndroid.ViewModels.BreedsViewModelFactory;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+public class BreedsCatsFragment extends Fragment {
 
-
-public class BreedsFragment extends Fragment {
-
-    public static final String TAG = "BreedsFragment";
+    public static final String TAG = "BreedsCatsFragment";
 
     private BreedsRepository breedsRepository;
     private List<Breed> breedList;
@@ -70,14 +45,12 @@ public class BreedsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         setHasOptionsMenu(true); // Add this!
-
         breedsRepository = new BreedsRepository(requireActivity().getApplication(), lastUpdate);
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_breeds, container, false);
+        return inflater.inflate(R.layout.fragment_cats_breeds, container, false);
     }
 
     @Override
@@ -85,8 +58,8 @@ public class BreedsFragment extends Fragment {
 
 
 
-        ProgressBar loader = getView().findViewById(R.id.loading);
-        RecyclerView breed_list = view.findViewById(R.id.breed_list);
+        ProgressBar loader = getView().findViewById(R.id.loadingCat);
+        RecyclerView breed_list = view.findViewById(R.id.breed_list_cat);
 
         loader.setVisibility(view.VISIBLE);
         breed_list.setVisibility(view.GONE);
@@ -102,7 +75,9 @@ public class BreedsFragment extends Fragment {
         BreedsViewModel breedsDogViewModel = new ViewModelProvider(this, new BreedsViewModelFactory(
                 requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
 
-        /*TabLayout tabLayout = view.findViewById(R.id.tabView);
+
+       /* TabLayout tabLayout = view.findViewById(R.id.tabView);
+        tabLayout.selectTab(tabLayout.getTabAt(1));
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -111,12 +86,12 @@ public class BreedsFragment extends Fragment {
                 System.out.println(tab.getPosition());
                 switch(tab.getPosition()){
                     case 0:
-
-                    case 1:
-                        Fragment selectedFragment = new BreedsCatsFragment();
+                        Fragment selectedFragment = new BreedsFragment();
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_layout,
                                         selectedFragment).commit();
+                    case 1:
+
                 }
             }
 
@@ -131,8 +106,8 @@ public class BreedsFragment extends Fragment {
 
             }
         });
-*/
 
+*/
         loader.setVisibility(view.VISIBLE);
         breed_list.setVisibility(view.GONE);
 
@@ -152,15 +127,12 @@ public class BreedsFragment extends Fragment {
         breed_list.setAdapter(breedsAdapter);
 
 
-
-
-
         // Short version to link ViewModel and LiveData
-        breedsDogViewModel.getBreedsListDog().observe(getViewLifecycleOwner(), response -> {
+        breedsCatViewModel.getBreedsListCat().observe(getViewLifecycleOwner(), response -> {
             // Update the UI
             if (response != null) {
                 if (response.size() != -1) {
-                    updateDogUIsuccess(response);
+                    updateCatUIsuccess(response);
                 } else {
                     updateUIfailure("Ciao");
                 }
@@ -171,30 +143,39 @@ public class BreedsFragment extends Fragment {
     }
 
 
-   private void updateDogUIsuccess(List<Breed> breedList) {
-       this.breedList.addAll(breedList);
-       requireActivity().runOnUiThread(new Runnable() {
-           @Override
-           public void run() {
-               breedsAdapter.notifyDataSetChanged();
-           }
-       });
+    private void updateDogUIsuccess(List<Breed> breedList) {
+        this.breedList.addAll(breedList);
+        requireActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                breedsAdapter.notifyDataSetChanged();
+            }
+        });
         this.getView().findViewById(R.id.loading).setVisibility(getView().GONE);
         this.getView().findViewById(R.id.breed_list).setVisibility(getView().VISIBLE);
     }
 
     private void updateUIfailure(String msg) {
-        this.getView().findViewById(R.id.loading).setVisibility(getView().GONE);
-        this.getView().findViewById(R.id.breed_list).setVisibility(getView().VISIBLE);
+        this.getView().findViewById(R.id.loadingCat).setVisibility(getView().GONE);
+        this.getView().findViewById(R.id.breed_list_cat).setVisibility(getView().VISIBLE);
     }
 
-
+    private void updateCatUIsuccess(List<Breed> breedList) {
+        this.breedList.addAll(breedList);
+        requireActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                breedsAdapter.notifyDataSetChanged();
+            }
+        });
+        this.getView().findViewById(R.id.loadingCat).setVisibility(getView().GONE);
+        this.getView().findViewById(R.id.breed_list_cat).setVisibility(getView().VISIBLE);
+    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-
 
         inflater.inflate(R.menu.main_menu, menu);
         MenuItem item = menu.findItem(R.id.action_search);

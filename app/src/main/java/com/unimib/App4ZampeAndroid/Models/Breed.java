@@ -8,9 +8,12 @@ import androidx.room.PrimaryKey;
 public class Breed {
 
 
-    @PrimaryKey
-    @NonNull private String id;
 
+
+    @PrimaryKey(autoGenerate = true)
+    private int breed_id;
+
+    private String id;
     private String name;
     private String temperament;
     private String life_span;
@@ -35,6 +38,12 @@ public class Breed {
         this.height = height;
     }
 
+    public int getBreed_id() {
+        return breed_id;
+    }
+    public void setBreed_id(int breed_id) {
+        this.breed_id = breed_id;
+    }
 
     public String getId() {
         return id;
