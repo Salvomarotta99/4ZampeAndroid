@@ -41,10 +41,15 @@ public class ScoreActivity extends AppCompatActivity {
                     Intent intent = new Intent(ScoreActivity.this,CatActivity.class);
                     ScoreActivity.this.startActivity(intent);
                     ScoreActivity.this.finish();
-                }else {
+                }else if(getIntent().getStringExtra("from").equals("Dog")){
                     Intent intent = new Intent(ScoreActivity.this,DogActivity.class);
                     ScoreActivity.this.startActivity(intent);
                     ScoreActivity.this.finish();
+                }else{
+                    Intent intent = new Intent(ScoreActivity.this,DogCatActivity.class);
+                    ScoreActivity.this.startActivity(intent);
+                    ScoreActivity.this.finish();
+
                 }
 
             }

@@ -35,6 +35,7 @@ import com.unimib.App4ZampeAndroid.Models.Question;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -58,6 +59,7 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
 
 
     private CountDownTimer countDown;
+    private List<Question> questionListTOT;
     private List<Question> questionList;
     private int imageId = R.drawable.mrdog;
 
@@ -91,8 +93,13 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
     }
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private void getQuestionList() {
-        questionList = new ArrayList<>();
-        questionList.addAll(SplashActivity.dbrepo.getDogList());
+        questionListTOT = new ArrayList<>();
+        questionList  = new ArrayList<>();
+        questionListTOT.addAll(SplashActivity.dbrepo.getDogList());
+        Collections.shuffle(questionListTOT);
+        for (int i = 0;i<5;i++) {
+            questionList.add(questionListTOT.get(i));
+        }
         setQuestion();
 
     }
@@ -103,15 +110,22 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
 
 
     private void setQuestion() {
+
         txtTimer.setText(String.valueOf(10));
         txtQuest.setText(questionList.get(0).getQuestion());
         opt1.setText(questionList.get(0).getOpt1());
         opt2.setText(questionList.get(0).getOpt2());
         opt3.setText(questionList.get(0).getOpt3());
         opt4.setText(questionList.get(0).getOpt4());
-        Picasso.get().load(questionList.get(0).getImgSrc()).into(imgView);
-        //Picasso.get().load(R.drawable.mrdog).into(imgView);
 
+        //Picasso.get().load(R.drawable.mrdog).into(imgView);
+        if(questionList.get(0).getImgSrc().contentEquals("nullD")){
+            final int random = new Random().nextInt(3);
+            Picasso.get().load(PlaceholderList[random]).into(imgView);
+        }else{
+            Picasso.get().load(questionList.get(0).getImgSrc()).into(imgView);
+
+        }
         startTimer();
 
         questNum = 0;
@@ -198,7 +212,7 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
                                     opt4.setText(questionList.get(questNum).getOpt4());
                                     break;
                                 case 5:
-                                   if(questionList.get(questNum).getImgSrc().contentEquals("null")){
+                                   if(questionList.get(questNum).getImgSrc().contentEquals("nullD")){
                                        final int random = new Random().nextInt(3);
                                        Picasso.get().load(PlaceholderList[random]).into(imgView);
                                 }else{

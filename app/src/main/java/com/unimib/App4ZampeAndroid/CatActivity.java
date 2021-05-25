@@ -34,6 +34,7 @@ import com.squareup.picasso.Picasso;
 import com.unimib.App4ZampeAndroid.Models.Question;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -60,6 +61,7 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
 
     private CountDownTimer countDown;
+    private List<Question> questionListTOT;
     private List<Question> questionList;
     private int imageId = R.drawable.mrdog;
 
@@ -92,8 +94,13 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
     }
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private void getQuestionList() {
-        questionList = new ArrayList<>();
-        questionList.addAll(SplashActivity.dbrepo.getCatList());
+        questionListTOT = new ArrayList<>();
+        questionList  = new ArrayList<>();
+        questionListTOT.addAll(SplashActivity.dbrepo.getCatList());
+        Collections.shuffle(questionListTOT);
+        for (int i = 0;i<5;i++) {
+            questionList.add(questionListTOT.get(i));
+        }
         setQuestion();
 
     }
@@ -110,7 +117,14 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
         opt2.setText(questionList.get(0).getOpt2());
         opt3.setText(questionList.get(0).getOpt3());
         opt4.setText(questionList.get(0).getOpt4());
-        Picasso.get().load(questionList.get(0).getImgSrc()).into(imgView);
+
+        if(questionList.get(0).getImgSrc().contentEquals("nullC")){
+            final int random = new Random().nextInt(3);
+            Picasso.get().load(PlaceholderList[random]).into(imgView);
+        }else{
+            Picasso.get().load(questionList.get(0).getImgSrc()).into(imgView);
+
+        }
         startTimer();
 
         questNum = 0;
@@ -198,7 +212,7 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
                                     opt4.setText(questionList.get(questNum).getOpt4());
                                     break;
                                 case 5:
-                                    if(questionList.get(questNum).getImgSrc().contentEquals("null")){
+                                    if(questionList.get(questNum).getImgSrc().contentEquals("nullC")){
                                         final int random = new Random().nextInt(3);
                                         Picasso.get().load(PlaceholderList[random]).into(imgView);
                                     }else{
