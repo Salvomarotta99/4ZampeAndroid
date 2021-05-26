@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_registration">
+    tools:context=".RegistrationActivity">
+
+    <FrameLayout
+        android:id="@+id/registrazione_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -20,14 +27,15 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="110dp"
         app:cardBackgroundColor="@color/green_200"
         app:cardCornerRadius="20dp"
-        app:cardElevation="4dp">
+        app:cardElevation="4dp"
+        app:contentPaddingBottom="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editNameRegistration"
@@ -119,8 +127,8 @@
             android:text="Registrati"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
-            app:elevation="4dp"
-            app:cornerRadius="20dp"/>
+            app:cornerRadius="20dp"
+            app:elevation="4dp" />
 
     </androidx.cardview.widget.CardView>
 

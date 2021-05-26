@@ -16,20 +16,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 import org.jetbrains.annotations.NotNull;
 
-public class activity_registration extends AppCompatActivity {
+
+
+public class RegistrationActivity extends AppCompatActivity {
+
 
     EditText mFullName, mEmail, mPassword, mPasswordConfirm;
     Button mButton;
 
+
     FirebaseAuth fAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
         mFullName=findViewById(R.id.editNameRegistration);
         mEmail=findViewById(R.id.editMailRegistration);
         mPassword=findViewById(R.id.editPswRegistration);
@@ -39,10 +44,11 @@ public class activity_registration extends AppCompatActivity {
 
         fAuth=FirebaseAuth.getInstance();
 
-        if(fAuth.getCurrentUser() != null){
+
+        /*if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
-        }
+        }*/
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,10 +90,10 @@ public class activity_registration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(activity_registration.this, "user created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistrationActivity.this, "user created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }else{
-                            Toast.makeText(activity_registration.this, "error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistrationActivity.this, "error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
