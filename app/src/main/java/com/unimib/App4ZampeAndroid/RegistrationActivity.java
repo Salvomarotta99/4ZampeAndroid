@@ -35,6 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText mFullName, mEmail, mPassword, mPasswordConfirm;
     Button mButton;
+    Button gotologin;
     String userID;
 
     FirebaseAuth fAuth;
@@ -52,6 +53,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mPasswordConfirm = findViewById(R.id.editPswConfirmRegistration);
 
         mButton = findViewById(R.id.registrati_btn);
+        gotologin = findViewById(R.id.gotologin_btn);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -146,6 +148,13 @@ public class RegistrationActivity extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+
+        gotologin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
 

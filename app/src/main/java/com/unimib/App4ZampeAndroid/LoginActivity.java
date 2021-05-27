@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 public class LoginActivity extends AppCompatActivity {
 
     EditText mEmail, mPassword;
-    Button mButton, mLoginBtn;
+    Button mButton, mLoginBtn, mSkip;
     FirebaseAuth fAuth;
     TextView forgotTextLink;
 
@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         mButton = findViewById(R.id.registrazione_btn);
         fAuth = FirebaseAuth.getInstance();
         forgotTextLink = findViewById(R.id.forgotPassword);
+        mSkip = findViewById(R.id.skipAuth);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +126,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 passwordResetDialog.create().show();
 
+            }
+        });
+
+        mSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
