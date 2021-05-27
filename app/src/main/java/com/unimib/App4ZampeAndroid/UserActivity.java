@@ -2,13 +2,16 @@ package com.unimib.App4ZampeAndroid;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +33,8 @@ public class UserActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    Button resendCode;
+    Button resendCode, resetPassLocal;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         fullName = findViewById(R.id.nomeProfilo);
         email = findViewById(R.id.mailProfilo);
+        resetPassLocal =findViewById(R.id.resetPasswordLocal);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -46,7 +51,7 @@ public class UserActivity extends AppCompatActivity {
         verifyMsg = findViewById(R.id.verifyMsg);
 
         userID = fAuth.getCurrentUser().getUid();
-        FirebaseUser user = fAuth.getCurrentUser();
+        user = fAuth.getCurrentUser();
 
         if (!user.isEmailVerified()) {
             verifyMsg.setVisibility(View.VISIBLE);
@@ -83,9 +88,51 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        resetPassLocal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText resetPassword = new EditText(v.getContext());
+
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password ?");
+                passwordResetDialog.setMessage("Enter new Password");
+                passwordResetDialog.setView(resetPassword);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //extract email and send the reset link
+                        String newPassword = resetPassword.getText().toString();
+                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(UserActivity.this,"Password reset successfully",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                Toast.makeText(UserActivity.this,"Password reset failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //close the dialog
+                    }
+                });
+
+                passwordResetDialog.create().show();
+
+            }
+        });
+
     }
-
-
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
