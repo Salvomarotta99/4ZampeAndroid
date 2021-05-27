@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "374883154485",
+    "project_id": "zampeandroid-5dbc2",
+    "storage_bucket": "zampeandroid-5dbc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374883154485:android:724ce6217cf9e81a644f7c",
+        "android_client_info": {
+          "package_name": "com.unimib.App4ZampeAndroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374883154485-6ok7m3itsavgu5pnjgediokhvverkqv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBphyi7BMDvIH_XXO26IqtVkgWoNpyYis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374883154485-6ok7m3itsavgu5pnjgediokhvverkqv1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

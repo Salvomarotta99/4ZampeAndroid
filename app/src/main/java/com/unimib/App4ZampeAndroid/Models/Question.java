@@ -6,14 +6,16 @@ public class Question {
     String opt2;
     String opt3;
     String opt4;
+    String imgSrc;
     int corrAnswer;
 
-    public Question(String question, String opt1, String opt2, String opt3, String opt4, int corrAnswer) {
+    public Question(String question, String opt1, String opt2, String opt3, String opt4, String imgSrc,int corrAnswer) {
         this.question = question;
         this.opt1 = opt1;
         this.opt2 = opt2;
         this.opt3 = opt3;
         this.opt4 = opt4;
+        this.imgSrc = imgSrc;
         this.corrAnswer = corrAnswer;
     }
 
@@ -55,6 +57,14 @@ public class Question {
 
     public void setOpt4(String opt4) {
         this.opt4 = opt4;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
     }
 
     public int getCorrAnswer() {
