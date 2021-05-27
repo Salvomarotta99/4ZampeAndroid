@@ -38,6 +38,9 @@
         <activity android:name=".CatActivity">
         </activity>
 
+        <activity android:name=".ScoreActivity">
+        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
