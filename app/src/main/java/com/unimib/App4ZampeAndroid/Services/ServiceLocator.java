@@ -25,7 +25,16 @@ public class ServiceLocator {
     }
 
 
-    public BreedsListService getBreedsWithRetrofit()
+    public BreedsListService getBreedsCatsWithRetrofit()
+    {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Costants.THECAT_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return retrofit.create(BreedsListService.class);
+    }
+
+    public BreedsListService getBreedsDogsWithRetrofit()
     {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Costants.THEDOG_BASE_URL)
@@ -34,7 +43,12 @@ public class ServiceLocator {
         return retrofit.create(BreedsListService.class);
     }
 
-    public BreedRoomDatabase getBreedsDao(Application application)
+    public BreedRoomDatabase getBreedsDaoDog(Application application)
+    {
+        return BreedRoomDatabase.getDatabase(application);
+    }
+
+    public BreedRoomDatabase getBreedsDaoCat(Application application)
     {
         return BreedRoomDatabase.getDatabase(application);
     }

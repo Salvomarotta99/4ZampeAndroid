@@ -3,6 +3,7 @@ package com.unimib.App4ZampeAndroid.Views;
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -40,7 +41,7 @@ public class BreedDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        setHasOptionsMenu(true);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_breeddetail, container, false);
     }
@@ -59,9 +60,18 @@ public class BreedDetailFragment extends Fragment {
         namePetDetail.setText(b.getName());
         temperamentPetDetail.setText(b.getTemperament());
         lifespanPetDetail.setText(b.getLife_span());
-        weightPetDetail.setText(b.getWeight().toString());
-        heightPetDetail.setText(b.getHeight().toString());
+        if(b.getWeight() != null){
+            weightPetDetail.setText(b.getWeight().toString());
+        }else {
+            weightPetDetail.setText("Non disponibile...");
+        }
+        if(b.getHeight() != null){
+            heightPetDetail.setText(b.getHeight().toString());
+        }else {
+            heightPetDetail.setText("Non disponibile...");
+        }
         wikiPetDetail.setText(b.getWikipedia_url());
 
     }
+
 }

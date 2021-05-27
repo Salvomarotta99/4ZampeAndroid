@@ -6,21 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/navy_500"
-    tools:context=".Views.BreedsFragment">
+    tools:context=".Views.BreedsCatsFragment">
+
+
 
 
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/loadingCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:indeterminateTint="@color/navy_500"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-    />
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/breed_list"
+        android:id="@+id/breed_list_cat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tabView"
