@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +25,8 @@ import com.unimib.App4ZampeAndroid.Views.PagerBreedsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseAuth fAuth;
+    FirebaseAuth  fAuth = FirebaseAuth.getInstance();
+    FirebaseUser fUser = fAuth.getCurrentUser();
 
 
     @Override
@@ -50,29 +52,33 @@ public class MainActivity extends AppCompatActivity {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.main_menu, menu);
 
-            MenuItem itemU = menu.findItem(R.id.action_user);
-            MenuItem itemLO = menu.findItem(R.id.action_logout);
-            MenuItem itemLI = menu.findItem(R.id.action_login);
-            MenuItem itemR = menu.findItem(R.id.action_registration);
-
-            itemU.setVisible(false);
-            itemLO.setVisible(false);
-            itemLI.setVisible(false);
-            itemR.setVisible(false);
-
-
-
-                itemU.setVisible(true);
-                itemLO.setVisible(true);
-
-                itemLI.setVisible(true);
-                itemR.setVisible(true);
-
-
 
             return true;
 
         }
+
+    public boolean onPrepareOptionsMenu(Menu menu)
+    {
+        MenuItem itemU = menu.findItem(R.id.action_user_profile);
+        MenuItem itemLO = menu.findItem(R.id.action_logout);
+        MenuItem itemLI = menu.findItem(R.id.action_login);
+        MenuItem itemR = menu.findItem(R.id.action_registration);
+
+        itemU.setVisible(false);
+        itemLO.setVisible(false);
+        itemLI.setVisible(false);
+        itemR.setVisible(false);
+
+        if (fUser!=null) {
+            itemU.setVisible(true);
+            itemLO.setVisible(true);
+        }else{
+            itemLI.setVisible(true);
+            itemR.setVisible(true);
+        }
+
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -85,8 +91,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-
+                return true;
             case R.id.action_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 return true;
@@ -101,13 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
     //startActivity(new Intent(getApplicationContext(), UserActivity.class));
-
-
-
 
 
     //Listener
