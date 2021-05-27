@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/breedsFragment">
+
+    <fragment
+        android:id="@+id/breedsFragment"
+        android:name="com.unimib.App4ZampeAndroid.Views.BreedsFragment"
+        android:label="fragment_breeds"
+        tools:layout="@layout/fragment_breeds" >
+        <action
+            android:id="@+id/action_breedsFragment_to_breedDetailFragment2"
+            app:destination="@id/breedDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/breedDetailFragment2"
+        android:name="com.unimib.App4ZampeAndroid.Views.BreedDetailFragment"
+        android:label="fragment_breeddetail"
+        tools:layout="@layout/fragment_breeddetail" />
+</navigation>
