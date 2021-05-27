@@ -61,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
             itemR.setVisible(false);
 
 
-            if(fAuth.getCurrentUser() != null){
+
                 itemU.setVisible(true);
                 itemLO.setVisible(true);
-            }else{
+
                 itemLI.setVisible(true);
                 itemR.setVisible(true);
-            }
+
 
 
             return true;
