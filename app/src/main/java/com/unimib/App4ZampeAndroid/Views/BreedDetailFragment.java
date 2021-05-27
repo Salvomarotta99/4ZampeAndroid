@@ -52,6 +52,7 @@ public class BreedDetailFragment extends Fragment {
         TextView namePetDetail = view.findViewById(R.id.namePetDetail);
         TextView temperamentPetDetail = view.findViewById(R.id.temperamentPetDetail);
         TextView lifespanPetDetail = view.findViewById(R.id.lifespanPetDetail);
+        TextView originPetDetail = view.findViewById(R.id.originPetDetail);
         TextView weightPetDetail = view.findViewById(R.id.weightPetDetail);
         TextView heightPetDetail = view.findViewById(R.id.heightPetDetail);
         TextView wikiPetDetail = view.findViewById(R.id.wikiPetDetail);
@@ -59,6 +60,7 @@ public class BreedDetailFragment extends Fragment {
         Picasso.get().load(b.getImage().getUrl()).into(imagePetDetail);
         namePetDetail.setText(b.getName());
         temperamentPetDetail.setText(b.getTemperament());
+        originPetDetail.setText(b.getOrigin());
         lifespanPetDetail.setText(b.getLife_span());
         if(b.getWeight() != null){
             weightPetDetail.setText(b.getWeight().toString());
