@@ -44,8 +44,6 @@
                     android:layout_width="300dp"
                     android:layout_height="200dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/mrdog"
-                    android:contentDescription="mr dog"
                     android:scaleType="centerCrop" />
 
                 <TextView
