@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText mFullName, mEmail, mPassword, mPasswordConfirm;
     Button mButton;
-    Button gotologin;
+    TextView gotologin;
     String userID;
 
     FirebaseAuth fAuth;
