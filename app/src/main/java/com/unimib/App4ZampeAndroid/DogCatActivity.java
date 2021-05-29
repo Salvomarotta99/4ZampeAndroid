@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -50,10 +51,26 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
     private int imageId = R.drawable.mrdog;
 
 
+    //back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog);
+
+        //back button in toolbar
+        getSupportActionBar().setTitle("Quiz");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtQuest = findViewById(R.id.txtQuest);
         txtTimer = findViewById(R.id.txtTimer);

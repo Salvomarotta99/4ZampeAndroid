@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -45,8 +46,6 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
     private TextView txtScore;
     private Button opt1, opt2, opt3, opt4;
 
-
-
     private ImageView imgView;
 
     private int questNum;
@@ -56,19 +55,33 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
             R.drawable.placeholdercat2,R.drawable.placeholdercat3};
 
 
-
-
-
-
     private CountDownTimer countDown;
     private List<Question> questionListTOT;
     private List<Question> questionList;
     private int imageId = R.drawable.mrdog;
 
+
+    //back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
+
+        //back button in toolbar
+        getSupportActionBar().setTitle("Quiz");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtQuest = findViewById(R.id.txtQuest);
         txtTimer = findViewById(R.id.txtTimer);

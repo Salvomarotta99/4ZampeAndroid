@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,18 @@ public class UserActivity extends AppCompatActivity {
     Button resendCode, resetPassLocal;
     FirebaseUser user;
 
+    //back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +65,10 @@ public class UserActivity extends AppCompatActivity {
 
         userID = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
+
+        //back button in toolbar
+        getSupportActionBar().setTitle("Profilo");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (!user.isEmailVerified()) {
             verifyMsg.setVisibility(View.VISIBLE);
@@ -133,6 +150,8 @@ public class UserActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
