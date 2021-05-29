@@ -105,6 +105,24 @@ public class MainActivity extends AppCompatActivity {
             //item for back button
             case android.R.id.home:
                 onBackPressed();
+
+                MenuItem itemU = findViewById(R.id.action_user_profile);
+                MenuItem itemLO = findViewById(R.id.action_logout);
+                MenuItem itemLI = findViewById(R.id.action_login);
+                MenuItem itemR = findViewById(R.id.action_registration);
+
+                itemU.setVisible(false);
+                itemLO.setVisible(false);
+                itemLI.setVisible(false);
+                itemR.setVisible(false);
+
+                if (fUser!=null) {
+                    itemU.setVisible(true);
+                    itemLO.setVisible(true);
+                }else{
+                    itemLI.setVisible(true);
+                    itemR.setVisible(true);
+                }
                 return true;
 
             default:

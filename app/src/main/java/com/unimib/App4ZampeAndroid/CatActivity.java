@@ -120,9 +120,6 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
 
 
-
-
-
     private void setQuestion() {
         txtTimer.setText(String.valueOf(10));
         txtQuest.setText(questionList.get(0).getQuestion());
