@@ -48,15 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.main_menu, menu);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
 
 
-            return true;
+        return true;
 
-        }
+    }
 
     public boolean onPrepareOptionsMenu(Menu menu)
     {
@@ -105,24 +105,8 @@ public class MainActivity extends AppCompatActivity {
             //item for back button
             case android.R.id.home:
                 onBackPressed();
-
-                MenuItem itemU = findViewById(R.id.action_user_profile);
-                MenuItem itemLO = findViewById(R.id.action_logout);
-                MenuItem itemLI = findViewById(R.id.action_login);
-                MenuItem itemR = findViewById(R.id.action_registration);
-
-                itemU.setVisible(false);
-                itemLO.setVisible(false);
-                itemLI.setVisible(false);
-                itemR.setVisible(false);
-
-                if (fUser!=null) {
-                    itemU.setVisible(true);
-                    itemLO.setVisible(true);
-                }else{
-                    itemLI.setVisible(true);
-                    itemR.setVisible(true);
-                }
+                Menu menu = findViewById(R.id.action_user);
+                onPrepareOptionsMenu(menu);
                 return true;
 
             default:
