@@ -3,20 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/breedsFragment">
+    app:startDestination="@id/breedsFragment2">
 
     <fragment
-        android:id="@+id/breedsFragment"
+        android:id="@+id/breedDetailFragment"
+        android:name="com.unimib.App4ZampeAndroid.Views.BreedDetailFragment"
+        android:label="fragment_breeddetail"
+        tools:layout="@layout/fragment_breeddetail" >
+        <argument
+            android:name="breed"
+            app:argType="com.unimib.App4ZampeAndroid.Models.Breed" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/breedsFragment2"
         android:name="com.unimib.App4ZampeAndroid.Views.BreedsFragment"
         android:label="fragment_breeds"
         tools:layout="@layout/fragment_breeds" >
         <action
-            android:id="@+id/action_breedsFragment_to_breedDetailFragment2"
-            app:destination="@id/breedDetailFragment2" />
+            android:id="@+id/dogsToDetail"
+            app:destination="@id/breedDetailFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/breedDetailFragment2"
-        android:name="com.unimib.App4ZampeAndroid.Views.BreedDetailFragment"
-        android:label="fragment_breeddetail"
-        tools:layout="@layout/fragment_breeddetail" />
+        android:id="@+id/breedsCatsFragment"
+        android:name="com.unimib.App4ZampeAndroid.Views.BreedsCatsFragment"
+        android:label="fragment_cats_breeds"
+        tools:layout="@layout/fragment_cats_breeds" >
+        <action
+            android:id="@+id/catsToDetail"
+            app:destination="@id/breedDetailFragment" />
+    </fragment>
 </navigation>

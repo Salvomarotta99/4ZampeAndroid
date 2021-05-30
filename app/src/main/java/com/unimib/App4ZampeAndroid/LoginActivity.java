@@ -46,18 +46,28 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_login);
 
         mEmail = findViewById(R.id.editMailLogin);
         mPassword = findViewById(R.id.editPswLogin);
         mLoginBtn = findViewById(R.id.login_btn);
         mButton = findViewById(R.id.registrazione_btn);
+
         fAuth = FirebaseAuth.getInstance();
+
+        if(fAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+
         forgotTextLink = findViewById(R.id.forgotPassword);
         mSkip = findViewById(R.id.skipAuth);
 
         //back button in toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
 
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "logged is successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            finish();
                         }else{
                             Toast.makeText(LoginActivity.this, "error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -102,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
+                finish();
             }
         });
 
@@ -150,13 +162,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 
-    }
-
-    public void openMainActivity() {
-        Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-        startActivity(intent);
     }
 }

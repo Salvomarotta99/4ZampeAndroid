@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.unimib.App4ZampeAndroid.Views.BreedDetailFragment;
 import com.unimib.App4ZampeAndroid.Views.PagerBreedsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //back button in toolbar
-        getSupportActionBar().setTitle("Razze");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("4Zampe");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         BottomNavigationView btnNav = findViewById(R.id.bottom_navigation);
         btnNav.setOnNavigationItemSelectedListener(navListener);
@@ -104,9 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
             //item for back button
             case android.R.id.home:
-                onBackPressed();
-                Menu menu = findViewById(R.id.action_user);
-                onPrepareOptionsMenu(menu);
+
+                Fragment selectedFragment = new PagerBreedsFragment();
+                this.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_layout,
+                            selectedFragment).commit();
+
                 return true;
 
             default:

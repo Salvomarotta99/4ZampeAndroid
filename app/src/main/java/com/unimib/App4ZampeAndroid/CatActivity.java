@@ -67,6 +67,7 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
         }
 

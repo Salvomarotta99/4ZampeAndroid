@@ -57,6 +57,7 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
         }
 

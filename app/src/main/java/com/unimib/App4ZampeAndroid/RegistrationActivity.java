@@ -50,6 +50,7 @@ public class RegistrationActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
         }
 
@@ -59,6 +60,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_registration);
 
         mFullName = findViewById(R.id.editNameRegistration);
@@ -74,13 +76,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         //back button in toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
 
-        /*if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }*/
+
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,6 +173,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
             }
         });
 
