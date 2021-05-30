@@ -48,6 +48,8 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
     private Button opt1, opt2, opt3, opt4;
 
 
+    private Boolean TIMER_IS_ATIVE = false;
+
 
     private ImageView imgView;
 
@@ -71,6 +73,8 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                setTIMER_IS_ATIVE(false);
+                countDown.cancel();
                 finish();
                 return true;
         }
@@ -167,6 +171,7 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
                 changeQuestion();
             }
         };
+        setTIMER_IS_ATIVE(true);
         countDown.start();
     }
 
@@ -191,12 +196,15 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
 
             txtTimer.setText(String.valueOf(10));
             startTimer();
+
         } else {
-            Intent intent = new Intent(DogActivity.this, ScoreActivity.class);
-            intent.putExtra("SCORE", String.valueOf(score));
-            intent.putExtra("from", "Dog");
-            startActivity(intent);
-            DogActivity.this.finish();
+            if(TIMER_IS_ATIVE) {
+                Intent intent = new Intent(DogActivity.this, ScoreActivity.class);
+                intent.putExtra("SCORE", String.valueOf(score));
+                intent.putExtra("from", "Dog");
+                startActivity(intent);
+                DogActivity.this.finish();
+            }
 
         }
     }
@@ -359,6 +367,9 @@ public class DogActivity extends AppCompatActivity implements View.OnClickListen
         }, 2000);
 
 
+    }
+    public void setTIMER_IS_ATIVE(Boolean TIMER_IS_ATIVE) {
+        this.TIMER_IS_ATIVE = TIMER_IS_ATIVE;
     }
 
 }

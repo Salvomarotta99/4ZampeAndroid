@@ -51,6 +51,8 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
     private int questNum;
     private int score;
 
+    private Boolean TIMER_IS_ATIVE = false;
+
     private int[] PlaceholderList = new int[]{R.drawable.placeholdercat,
             R.drawable.placeholdercat2,R.drawable.placeholdercat3};
 
@@ -67,6 +69,8 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                setTIMER_IS_ATIVE(false);
+                countDown.cancel();
                 finish();
                 return true;
         }
@@ -159,6 +163,7 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
                 changeQuestion();
             }
         };
+        setTIMER_IS_ATIVE(true);
         countDown.start();
     }
 
@@ -185,12 +190,13 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
             txtTimer.setText(String.valueOf(10));
             startTimer();
         } else {
-            Intent intent = new Intent(CatActivity.this, ScoreActivity.class);
-            intent.putExtra("SCORE", String.valueOf(score));
-            intent.putExtra("from", "Cat");
-            startActivity(intent);
-            CatActivity.this.finish();
-
+            if(TIMER_IS_ATIVE) {
+                Intent intent = new Intent(CatActivity.this, ScoreActivity.class);
+                intent.putExtra("SCORE", String.valueOf(score));
+                intent.putExtra("from", "Cat");
+                startActivity(intent);
+                CatActivity.this.finish();
+            }
         }
     }
 
@@ -351,7 +357,9 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
 
     }
-
+    public void setTIMER_IS_ATIVE(Boolean TIMER_IS_ATIVE) {
+        this.TIMER_IS_ATIVE = TIMER_IS_ATIVE;
+    }
 }
 
 

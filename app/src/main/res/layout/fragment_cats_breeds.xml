@@ -21,10 +21,31 @@
         android:layout_centerVertical="true"
         />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/is_connected_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connessione internet assente"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loadingCat"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/refresh_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/is_connected_cat"
+        android:layout_centerHorizontal="true"
+        android:linksClickable="true"
+        android:text="Riprova"
+        android:textColor="@color/navy_500"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/breed_list_cat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabView"
         tools:layout_editor_absoluteX="137dp" />
+
+
 </RelativeLayout>

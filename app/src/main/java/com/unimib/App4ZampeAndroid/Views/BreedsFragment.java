@@ -1,6 +1,9 @@
 package com.unimib.App4ZampeAndroid.Views;
 
 import android.app.ActionBar;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -27,6 +30,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
@@ -85,24 +89,53 @@ public class BreedsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        ConnectivityManager cm =
+                (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
 
 
         ProgressBar loader = getView().findViewById(R.id.loading);
         RecyclerView breed_list = view.findViewById(R.id.breed_list);
+        TextView is_connected = getView().findViewById(R.id.is_connected);
+        TextView refresh = getView().findViewById(R.id.refresh);
 
-        loader.setVisibility(view.VISIBLE);
-        breed_list.setVisibility(view.GONE);
+        if(!isConnected)
+        {
+            is_connected.setVisibility(view.VISIBLE);
+            breed_list.setVisibility(view.GONE);
+            refresh.setVisibility(view.VISIBLE);
 
-        breedList = new ArrayList<>();
-        // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
-        // to the constructor of NewsViewModel
-        BreedsViewModel breedsCatViewModel = new ViewModelProvider(getActivity(), new BreedsViewModelFactory(
-                requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment selectedFragment = new PagerBreedsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_layout,
+                                    selectedFragment).commit();
+                }
+            });
+        }
 
-        // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
-        // to the constructor of NewsViewModel
-        BreedsViewModel breedsDogViewModel = new ViewModelProvider(this, new BreedsViewModelFactory(
-                requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
+        else {
+
+            is_connected.setVisibility(view.GONE);
+            refresh.setVisibility(view.GONE);
+            loader.setVisibility(view.VISIBLE);
+            breed_list.setVisibility(view.GONE);
+
+            breedList = new ArrayList<>();
+            // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
+            // to the constructor of NewsViewModel
+            BreedsViewModel breedsCatViewModel = new ViewModelProvider(getActivity(), new BreedsViewModelFactory(
+                    requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
+
+            // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
+            // to the constructor of NewsViewModel
+            BreedsViewModel breedsDogViewModel = new ViewModelProvider(this, new BreedsViewModelFactory(
+                    requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
 
         /*TabLayout tabLayout = view.findViewById(R.id.tabView);
 
@@ -135,41 +168,38 @@ public class BreedsFragment extends Fragment {
         });
 */
 
-        loader.setVisibility(view.VISIBLE);
-        breed_list.setVisibility(view.GONE);
+            loader.setVisibility(view.VISIBLE);
+            breed_list.setVisibility(view.GONE);
 
-        breedList = new ArrayList<>();
-        breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
-            @Override
-            public void onClick(Breed b) {
-                Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
-                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_layout,
-                                selectedFragment).commit();
-            }
-
-        });
-        breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
-        breed_list.setAdapter(breedsAdapter);
-
-
-
-
-
-        // Short version to link ViewModel and LiveData
-        breedsDogViewModel.getBreedsListDog().observe(getViewLifecycleOwner(), response -> {
-            // Update the UI
-            if (response != null) {
-                if (response.size() != -1) {
-                    updateDogUIsuccess(response);
-                } else {
-                    updateUIfailure("Ciao");
+            breedList = new ArrayList<>();
+            breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
+                @Override
+                public void onClick(Breed b) {
+                    Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
+                    Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_layout,
+                                    selectedFragment).commit();
                 }
-            }
-        });
+
+            });
+            breed_list.setLayoutManager(new GridLayoutManager(getContext(), 2));
+            breed_list.setAdapter(breedsAdapter);
 
 
+            // Short version to link ViewModel and LiveData
+            breedsDogViewModel.getBreedsListDog().observe(getViewLifecycleOwner(), response -> {
+                // Update the UI
+                if (response != null) {
+                    if (response.size() != -1) {
+                        updateDogUIsuccess(response);
+                    } else {
+                        updateUIfailure("Ciao");
+                    }
+                }
+            });
+
+        }
     }
 
 
@@ -213,6 +243,7 @@ public class BreedsFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if(breedsAdapter != null)
                 breedsAdapter.getFilter().filter(newText);
                 return false;
             }

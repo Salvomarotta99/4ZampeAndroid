@@ -32,7 +32,7 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
     private TextView txtScore;
     private Button opt1, opt2, opt3, opt4;
 
-
+    private Boolean TIMER_IS_ATIVE = false;
 
     private ImageView imgView;
 
@@ -57,6 +57,8 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                setTIMER_IS_ATIVE(false);
+                countDown.cancel();
                 finish();
                 return true;
         }
@@ -159,6 +161,7 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
                 changeQuestion();
             }
         };
+        setTIMER_IS_ATIVE(true);
         countDown.start();
     }
 
@@ -184,11 +187,13 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
             txtTimer.setText(String.valueOf(10));
             startTimer();
         } else {
-            Intent intent = new Intent(DogCatActivity.this, ScoreActivity.class);
-            intent.putExtra("SCORE", String.valueOf(score));
-            intent.putExtra("from", "DC");
-            startActivity(intent);
-            DogCatActivity.this.finish();
+            if(TIMER_IS_ATIVE) {
+                Intent intent = new Intent(DogCatActivity.this, ScoreActivity.class);
+                intent.putExtra("SCORE", String.valueOf(score));
+                intent.putExtra("from", "DC");
+                startActivity(intent);
+                DogCatActivity.this.finish();
+            }
 
         }
     }
@@ -354,6 +359,10 @@ public class DogCatActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         }, 2000);
+    }
+
+    public void setTIMER_IS_ATIVE(Boolean TIMER_IS_ATIVE) {
+        this.TIMER_IS_ATIVE = TIMER_IS_ATIVE;
     }
 
 }

@@ -1,5 +1,8 @@
 package com.unimib.App4ZampeAndroid.Views;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -8,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,89 +61,116 @@ public class BreedsCatsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
 
+        ConnectivityManager cm =
+                (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
 
         ProgressBar loader = getView().findViewById(R.id.loadingCat);
         RecyclerView breed_list = view.findViewById(R.id.breed_list_cat);
+        TextView is_connected = getView().findViewById(R.id.is_connected_cat);
+        TextView refresh = getView().findViewById(R.id.refresh_cat);
 
-        loader.setVisibility(view.VISIBLE);
-        breed_list.setVisibility(view.GONE);
+        if(!isConnected)
+        {
+            is_connected.setVisibility(view.VISIBLE);
+            breed_list.setVisibility(view.GONE);
+            refresh.setVisibility(view.VISIBLE);
 
-        breedList = new ArrayList<>();
-        // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
-        // to the constructor of NewsViewModel
-        BreedsViewModel breedsCatViewModel = new ViewModelProvider(getActivity(), new BreedsViewModelFactory(
-                requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment selectedFragment = new PagerBreedsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_layout,
+                                    selectedFragment).commit();
+                }
+            });
+        } else{
 
-        // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
-        // to the constructor of NewsViewModel
-        BreedsViewModel breedsDogViewModel = new ViewModelProvider(this, new BreedsViewModelFactory(
-                requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
+            is_connected.setVisibility(view.GONE);
+            refresh.setVisibility(view.GONE);
+            loader.setVisibility(view.VISIBLE);
+            breed_list.setVisibility(view.GONE);
+
+            breedList = new ArrayList<>();
+            // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
+            // to the constructor of NewsViewModel
+            BreedsViewModel breedsCatViewModel = new ViewModelProvider(getActivity(), new BreedsViewModelFactory(
+                    requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
+
+            // Creation of a ViewModel using NewsViewModelFactory to pass other parameters
+            // to the constructor of NewsViewModel
+            BreedsViewModel breedsDogViewModel = new ViewModelProvider(this, new BreedsViewModelFactory(
+                    requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
 
 
-       /* TabLayout tabLayout = view.findViewById(R.id.tabView);
-        tabLayout.selectTab(tabLayout.getTabAt(1));
+           /* TabLayout tabLayout = view.findViewById(R.id.tabView);
+            tabLayout.selectTab(tabLayout.getTabAt(1));
 
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                System.out.println(tab.getPosition());
-                switch(tab.getPosition()){
-                    case 0:
-                        Fragment selectedFragment = new BreedsFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_layout,
-                                        selectedFragment).commit();
-                    case 1:
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    System.out.println(tab.getPosition());
+                    switch(tab.getPosition()){
+                        case 0:
+                            Fragment selectedFragment = new BreedsFragment();
+                            getActivity().getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.fragment_layout,
+                                            selectedFragment).commit();
+                        case 1:
+
+                    }
+                }
+
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
                 }
-            }
 
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-*/
-        loader.setVisibility(view.VISIBLE);
-        breed_list.setVisibility(view.GONE);
-
-        breedList = new ArrayList<>();
-        breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
-            @Override
-            public void onClick(Breed b) {
-                Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
-                Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_layout,
-                                selectedFragment).commit();
-            }
-
-        });
-        breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
-        breed_list.setAdapter(breedsAdapter);
-
-
-        // Short version to link ViewModel and LiveData
-        breedsCatViewModel.getBreedsListCat().observe(getViewLifecycleOwner(), response -> {
-            // Update the UI
-            if (response != null) {
-                if (response.size() != -1) {
-                    updateCatUIsuccess(response);
-                } else {
-                    updateUIfailure("Ciao");
                 }
-            }
-        });
+            });
+
+    */
+            loader.setVisibility(view.VISIBLE);
+            breed_list.setVisibility(view.GONE);
+
+            breedList = new ArrayList<>();
+            breedsAdapter = new BreedsAdapter(breedList, new BreedsAdapter.OnItemClickListener() {
+                @Override
+                public void onClick(Breed b) {
+                    Fragment selectedFragment = new BreedDetailFragment(b, getActivity());
+                    Toast.makeText(getActivity(), b.getName(), Toast.LENGTH_SHORT).show();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_layout,
+                                    selectedFragment).commit();
+                }
+
+            });
+            breed_list.setLayoutManager(new GridLayoutManager(getContext(),2));
+            breed_list.setAdapter(breedsAdapter);
 
 
+            // Short version to link ViewModel and LiveData
+            breedsCatViewModel.getBreedsListCat().observe(getViewLifecycleOwner(), response -> {
+                // Update the UI
+                if (response != null) {
+                    if (response.size() != -1) {
+                        updateCatUIsuccess(response);
+                    } else {
+                        updateUIfailure("Ciao");
+                    }
+                }
+            });
+
+        }
     }
 
 
@@ -192,6 +223,8 @@ public class BreedsCatsFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
+                if(breedsAdapter != null)
                 breedsAdapter.getFilter().filter(newText);
                 return false;
             }
