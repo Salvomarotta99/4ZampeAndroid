@@ -1,18 +1,23 @@
 package com.unimib.App4ZampeAndroid;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,17 +30,23 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
 public class UserActivity extends AppCompatActivity {
     public static final String TAG = "tag";
-    TextView fullName, email, verifyMsg;
+    TextView fullName, email, verifyMsg, changeProfileImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
     Button resendCode, resetPassLocal;
     FirebaseUser user;
+    ImageView profileImage;
+    StorageReference storageReference;
 
     //back button
     @Override
@@ -55,16 +66,28 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         fullName = findViewById(R.id.nomeProfilo);
         email = findViewById(R.id.mailProfilo);
-        resetPassLocal =findViewById(R.id.resetPasswordLocal);
+        resetPassLocal = findViewById(R.id.resetPasswordLocal);
+        profileImage = findViewById(R.id.profileImage);
+        changeProfileImage = findViewById(R.id.changeProfile);
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         resendCode = findViewById(R.id.resendCode);
         verifyMsg = findViewById(R.id.verifyMsg);
 
         userID = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
+
+        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
 
         //back button in toolbar
         getSupportActionBar().setTitle("Profilo");
@@ -149,9 +172,54 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        changeProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //open gallery
+                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGalleryIntent,1000);
+            }
+        });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            if(resultCode == Activity.RESULT_OK){
+                Uri imageUri = data.getData();
+                uploadImageToFirebase(imageUri);
+                    
 
+            }
+        }
+    }
+
+    //upload image
+    private void uploadImageToFirebase(Uri imageUri) {
+        final StorageReference fileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profileImage);
+                    }
+                });
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(UserActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
