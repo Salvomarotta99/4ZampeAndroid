@@ -64,12 +64,32 @@ public class BreedDetailFragment extends Fragment {
             Picasso.get().load(b.getImage().getUrl()).into(imagePetDetail);
         }
         else {
-            Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nauticaesport.it%2Fkit-candelieri-per-passerella-pieghevole-210-cm.html&psig=AOvVaw1xdtVpyUCCu8oESUG42RD2&ust=1621862738429000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiq1dfz3_ACFQAAAAAdAAAAABAD").into(imagePetDetail);
+            Picasso.get().load(R.drawable.placeholder_immagine).into(imagePetDetail);
         }
         namePetDetail.setText(b.getName());
         temperamentPetDetail.setText(b.getTemperament());
-        originPetDetail.setText(b.getOrigin());
+        //originPetDetail.setText(b.getOrigin());
         lifespanPetDetail.setText(b.getLife_span());
+
+        //controllo origine
+        if(b.getOrigin()!= null) {
+            originPetDetail.setText(b.getOrigin());
+        }else{
+            originPetDetail.setText("Non disponibile...");
+        }
+
+        if(b.getOrigin().equals("")){
+            originPetDetail.setText("Non disponibile...");
+        }
+
+        //controllo wiki
+        if(b.getWikipedia_url()!= null){
+            wikiPetDetail.setText(b.getWikipedia_url());
+        }else{
+           wikiPetDetail.setText("Non disponibile...");
+        }
+
+
         if(b.getWeight() != null){
             weightPetDetail.setText(b.getWeight().toString());
         }else {
@@ -80,7 +100,7 @@ public class BreedDetailFragment extends Fragment {
         }else {
             heightPetDetail.setText("Non disponibile...");
         }
-        wikiPetDetail.setText(b.getWikipedia_url());
+
 
     }
 

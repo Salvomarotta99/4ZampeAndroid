@@ -188,7 +188,8 @@
                     android:text="@string/wikiPetDetail"
                     android:linksClickable="true"
                     android:textSize="20sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:autoLink="web"/>
 
 
             </LinearLayout>

@@ -82,7 +82,7 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedsView
                 Picasso.get().load(b.getImage().getUrl()).into(imageViewBreed);
             }
             else {
-                Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nauticaesport.it%2Fkit-candelieri-per-passerella-pieghevole-210-cm.html&psig=AOvVaw1xdtVpyUCCu8oESUG42RD2&ust=1621862738429000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiq1dfz3_ACFQAAAAAdAAAAABAD").into(imageViewBreed);
+                Picasso.get().load(R.drawable.placeholder_immagine).into(imageViewBreed);
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
