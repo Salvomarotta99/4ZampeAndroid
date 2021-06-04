@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class UserActivity extends AppCompatActivity {
     public static final String TAG = "tag";
-    TextView fullName, email, verifyMsg, changeProfileImage;
+    TextView fullName, email, bio, verifyMsg, changeProfile;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -54,9 +54,9 @@ public class UserActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
         }
-
         return(super.onOptionsItemSelected(item));
     }
 
@@ -68,8 +68,8 @@ public class UserActivity extends AppCompatActivity {
         email = findViewById(R.id.mailProfilo);
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
         profileImage = findViewById(R.id.profileImage);
-        changeProfileImage = findViewById(R.id.changeProfile);
-
+        changeProfile = findViewById(R.id.changeProfile);
+        bio = findViewById(R.id.Bio);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -125,6 +125,8 @@ public class UserActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 fullName.setText(documentSnapshot.getString("fName"));
                 email.setText(documentSnapshot.getString("email"));
+                bio.setText(documentSnapshot.getString("bio"));
+
             }
         });
 
@@ -172,54 +174,19 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        changeProfileImage.setOnClickListener(new View.OnClickListener() {
+        changeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //open gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent,1000);
+                Intent i = new Intent(v.getContext(), EditProfile.class);
+                i.putExtra("email", email.getText().toString());
+                i.putExtra("fullName", fullName.getText().toString());
+                i.putExtra("bio", bio.getText().toString());
+                startActivity(i);
             }
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            if(resultCode == Activity.RESULT_OK){
-                Uri imageUri = data.getData();
-                uploadImageToFirebase(imageUri);
-                    
 
-            }
-        }
-    }
-
-    //upload image
-    private void uploadImageToFirebase(Uri imageUri) {
-        final StorageReference fileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
-                    }
-                });
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(UserActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-    }
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();

@@ -60,7 +60,12 @@ public class BreedDetailFragment extends Fragment {
         TextView heightPetDetail = view.findViewById(R.id.heightPetDetail);
         TextView wikiPetDetail = view.findViewById(R.id.wikiPetDetail);
 
-        Picasso.get().load(b.getImage().getUrl()).into(imagePetDetail);
+        if(b.getImage() != null){
+            Picasso.get().load(b.getImage().getUrl()).into(imagePetDetail);
+        }
+        else {
+            Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nauticaesport.it%2Fkit-candelieri-per-passerella-pieghevole-210-cm.html&psig=AOvVaw1xdtVpyUCCu8oESUG42RD2&ust=1621862738429000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiq1dfz3_ACFQAAAAAdAAAAABAD").into(imagePetDetail);
+        }
         namePetDetail.setText(b.getName());
         temperamentPetDetail.setText(b.getTemperament());
         originPetDetail.setText(b.getOrigin());
