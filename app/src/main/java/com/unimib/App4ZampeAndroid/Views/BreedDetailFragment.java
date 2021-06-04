@@ -72,7 +72,6 @@ public class BreedDetailFragment extends Fragment {
         }
         namePetDetail.setText(b.getName());
         temperamentPetDetail.setText(b.getTemperament());
-        //originPetDetail.setText(b.getOrigin());
         lifespanPetDetail.setText(b.getLife_span());
 
         //controllo origine
@@ -95,12 +94,12 @@ public class BreedDetailFragment extends Fragment {
 
 
         if(b.getWeight() != null){
-            weightPetDetail.setText(b.getWeight().toString());
+            weightPetDetail.setText(b.getWeight().getMetric()+" kg");
         }else {
             weightPetDetail.setText("Non disponibile...");
         }
         if(b.getHeight() != null){
-            heightPetDetail.setText(b.getHeight().toString());
+            heightPetDetail.setText(b.getHeight().getMetric()+" cm");
         }else {
             heightPetDetail.setText("Non disponibile...");
         }

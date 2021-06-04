@@ -21,11 +21,11 @@ public class Breed {
     private String wikipedia_url;
     private String origin;
     private String country_code;
-    private Object weight;
-    private Object height;
+    private BreedObject weight;
+    private BreedObject height;
     private ImageBreed image;
 
-    public Breed(String id, String name, String temperament, String life_span, String alt_names, String wikipedia_url, String origin, String country_code, Object weight, Object height) {
+    public Breed(String id, String name, String temperament, String life_span, String alt_names, String wikipedia_url, String origin, String country_code, BreedObject weight, BreedObject height) {
         this.id = id;
         this.name = name;
         this.temperament = temperament;
@@ -105,19 +105,20 @@ public class Breed {
         this.country_code = country_code;
     }
 
-    public Object getWeight() {
+    public BreedObject getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(BreedObject weight) {
         this.weight = weight;
     }
 
-    public Object getHeight() {
+    public BreedObject getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(BreedObject height) {
+
         this.height = height;
     }
 
