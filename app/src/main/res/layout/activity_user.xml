@@ -151,26 +151,26 @@
                     android:id="@+id/verifyMsg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="E-mail non verificata!"
                     android:layout_below="@id/Bio"
-                    android:layout_marginTop="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="E-mail non verificata!"
                     android:textAlignment="center"
                     android:textColor="#C2185B"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/resendCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/verifyMsg"
+                    android:layout_below="@id/Bio"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginEnd="40dp"
                     android:fontFamily="@font/fontdiner_swanky"
                     android:text="verifica ora"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:elevation="4dp" />
 
                 <com.google.android.material.button.MaterialButton
