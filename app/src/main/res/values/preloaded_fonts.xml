@@ -2,7 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/carter_one</item>
+        <item>@font/fontdiner_swanky</item>
         <item>@font/homemade_apple</item>
+        <item>@font/knewave</item>
         <item>@font/lily_script_one</item>
         <item>@font/roboto_bold</item>
         <item>@font/roboto_thin</item>
