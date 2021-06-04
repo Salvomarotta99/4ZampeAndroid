@@ -4,10 +4,15 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -65,6 +70,8 @@ public class CategorieFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        setHasOptionsMenu(true); // Add this!
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_categorie, container, false);
 
@@ -99,4 +106,23 @@ public class CategorieFragment extends Fragment {
 
         return v;
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+
+
+        inflater.inflate(R.menu.main_menu, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        SearchView searchView = (SearchView) item.getActionView();
+
+        item.setVisible(false);
+        searchView.setVisibility(View.GONE);
+
+    }
+
+
 }
