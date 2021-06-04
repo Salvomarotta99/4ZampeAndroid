@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -66,13 +67,13 @@ public class CategorieFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_categorie, container, false);
-        Button btnDog = v.findViewById(R.id.btnDog);
-        Button btnCat = v.findViewById(R.id.btnCat);
-        Button btnDogCat = v.findViewById(R.id.btnDogCat);
 
 
+        CardView cdog = v.findViewById(R.id.categoriaCV1);
+        CardView ccat = v.findViewById(R.id.categoriaCV2);
+        CardView cdogcat = v.findViewById(R.id.categoriaCV3);
 
-        btnDog.setOnClickListener(new View.OnClickListener() {
+        cdog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),DogActivity.class));
@@ -80,18 +81,18 @@ public class CategorieFragment extends Fragment {
         });
 
 
-        btnDogCat.setOnClickListener(new View.OnClickListener() {
+        ccat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DogCatActivity.class));
+                startActivity(new Intent(getActivity(), CatActivity.class));
             }
         });
 
 
-        btnCat.setOnClickListener(new View.OnClickListener() {
+        cdogcat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), CatActivity.class));
+                startActivity(new Intent(getActivity(), DogCatActivity.class));
             }
         });
 

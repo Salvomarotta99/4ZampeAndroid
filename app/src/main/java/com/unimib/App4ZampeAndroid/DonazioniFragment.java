@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.net.URI;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link DonazioniFragment#newInstance} factory method to
@@ -68,8 +66,11 @@ public class DonazioniFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_donazioni, container, false);
-        Button donationButton = v.findViewById(R.id.donBT);
-        donationButton.setOnClickListener(new View.OnClickListener() {
+        Button donationButtonOP = v.findViewById(R.id.donBTOP);
+        Button donationButtonEn = v.findViewById(R.id.donBTEnpa);
+        Button donationButtonMG = v.findViewById(R.id.donBTMondogatto);
+        Button donationButtonSD = v.findViewById(R.id.donBTSaveDog);
+        donationButtonEn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = "https://www.comunicazioneiniziativeenpa.it/dona-ora";
@@ -81,6 +82,43 @@ public class DonazioniFragment extends Fragment {
             }
 
         });
+        donationButtonSD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://www.savethedogs.eu/dona-ora/";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+
+            }
+
+        });
+        donationButtonMG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://mondogatto.org/aiutaci/fai-una-donazione";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+
+            }
+
+        });
+        donationButtonOP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://oipa.org/italia/offerta/";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+
+            }
+
+        });
+
         return v;
     }
 }

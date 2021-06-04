@@ -15,7 +15,25 @@
         Piccola o grande che sia, una donazione è preziosa per Enpa e per le migliaia di trovatelli che ogni anno trovano rifugio nelle loro strutture.
 
     </string>
+    <string name="DonazioniTextMD">Con il tuo contributo potrai aiutare i gatti meno fortunati.
+       La cura dei gatti, le tante attivita e la ricostruzione del rifugio sono possibili solo grazie al tuo contributo.
+
+    </string>
+    <string name="DonazioniTextOP">Con il tuo contributo potrai aiutare i nostri amici a quattro zampe.
+        La Associazione Oipa si occupera della donazione.
+
+    </string>
+    <string name="DonazioniTextSD">Con il tuo contributo potrai aiutare i nostri amici abbandonati.
+        Aiutaci a contrastare il randagismo
+e a donare ad ogni cane una vita dignitosa
+    </string>
     <string name="DonazioniMaggioriinfo">Per maggiori informazioni fai Tap sul bottone.
+    </string>
+    <string name="catCani">Metti alla prova le tue conoscenze con questo set di quiz a tema Cani.
+    </string>
+    <string name="catGatti">Metti alla prova le tue conoscenze con questo set di quiz a tema Gatti.
+    </string>
+    <string name="catCaniGatti">Metti alla prova le tue conoscenze con questo set di quiz completo.
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
