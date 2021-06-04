@@ -11,7 +11,12 @@
     <string name="caneDue">Golden</string>
     <string name="caneTre">Pastore Tedesco</string>
     <string name="caneQuattro">Mastino</string>
+    <string name="DonazioniText">Con il tuo contributo potrai aiutare i nostri amici a quattro zampe.
+        Piccola o grande che sia, una donazione è preziosa per Enpa e per le migliaia di trovatelli che ogni anno trovano rifugio nelle loro strutture.
 
+    </string>
+    <string name="DonazioniMaggioriinfo">Per maggiori informazioni fai Tap sul bottone.
+    </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="razzeFragment">razzeFragment</string>

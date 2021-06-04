@@ -2,70 +2,100 @@
 <com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonazioniFragment"
-    android:id="@+id/frameLayout2">
+    android:layout_gravity="center"
+    tools:context=".DonazioniFragment">
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/DonazioniCV1"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
 
-        android:layout_marginTop="10dp"
-        app:cardBackgroundColor="@color/green_200"
-        app:cardCornerRadius="30dp">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/donBT"
+                android:layout_width="150dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="Vai a ENPA.it"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:src="@drawable/ic_baseline_monetization_on_24"
-                android:background="@color/white"
-                android:layout_marginTop="30dp" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="356dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/DonazioniText"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/DonazioniMaggioriinfo"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dona a un'associazione"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:text="Dona ora"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                android:padding="12dp"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DonazioniCV1" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/DonazioniCV1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:clipToPadding="true"
+                app:cardBackgroundColor="@color/green_200"
+                app:cardCornerRadius="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dogcat1" />
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/DonazioniCV2"
-        android:layout_below="@id/DonazioniCV1"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-
-        android:layout_marginTop="10dp"
-        app:cardBackgroundColor="@color/green_200"
-        app:cardCornerRadius="30dp"/>
-
-
 
 
 </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
