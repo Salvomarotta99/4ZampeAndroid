@@ -76,12 +76,12 @@ public class BreedDetailFragment extends Fragment {
 
         //controllo origine
         if(b.getOrigin()!= null) {
-            originPetDetail.setText(b.getOrigin());
+            if(b.getOrigin().equals("")){
+                originPetDetail.setText("Non disponibile...");
+            }else {
+                originPetDetail.setText(b.getOrigin());
+            }
         }else{
-            originPetDetail.setText("Non disponibile...");
-        }
-
-        if(b.getOrigin().equals("")){
             originPetDetail.setText("Non disponibile...");
         }
 

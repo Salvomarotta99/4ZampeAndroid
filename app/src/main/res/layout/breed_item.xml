@@ -6,7 +6,6 @@
     android:layout_margin="10dp"
     android:clickable="true"
     android:orientation="vertical"
-
     >
 
     <com.google.android.material.card.MaterialCardView
@@ -15,7 +14,8 @@
         android:elevation="5dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="5dp"
-        app:contentPadding="3dp">
+        app:contentPadding="3dp"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +36,8 @@
                     android:id="@+id/breed_image"
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                   />
             </androidx.cardview.widget.CardView>
 
 
@@ -44,7 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+               >
 
                 <TextView
                     android:id="@+id/breed_name"
@@ -55,7 +57,8 @@
                     android:text="@string/breed_nameText"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
 
             </LinearLayout>
 
