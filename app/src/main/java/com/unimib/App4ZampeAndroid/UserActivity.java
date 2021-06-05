@@ -1,20 +1,20 @@
 package com.unimib.App4ZampeAndroid;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -32,7 +34,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -47,6 +48,7 @@ public class UserActivity extends AppCompatActivity {
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
+    //Dialog dialog;
 
     //back button
     @Override
@@ -80,6 +82,14 @@ public class UserActivity extends AppCompatActivity {
 
         userID = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
+
+        //dialog = new Dialog(UserActivity.this);
+        //dialog.setContentView(R.layout.dialog_update_password);
+        //missing line
+        //dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+
 
         StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -134,18 +144,48 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText resetPassword = new EditText(v.getContext());
+                //EditText resetPassword = new EditText(v.getContext());
+                View view = getLayoutInflater().inflate(R.layout.dialog_update_password, null);
+                // AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                final EditText passwordEt = (EditText) view.findViewById(R.id.passwordEt);
+                final EditText newPasswordEt = (EditText) view.findViewById(R.id.newPasswordEt);
+                Button updatePasswordBtn = (Button) view.findViewById(R.id.updatePasswordBtn);
 
-                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
-                passwordResetDialog.setTitle("Reset Password ?");
-                passwordResetDialog.setMessage("Enter new Password");
-                passwordResetDialog.setView(resetPassword);
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(UserActivity.this);
 
-                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                //passwordResetDialog.setTitle("Reset Password ?");
+                //passwordResetDialog.setMessage("Enter new Password");
+                passwordResetDialog.setView(view);
+
+
+                AlertDialog dialog = passwordResetDialog.create();
+                dialog.show();
+
+                updatePasswordBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String oldPassword = passwordEt.getText().toString().trim();
+                        String newPassword = newPasswordEt.getText().toString().trim();
+                        if (TextUtils.isEmpty(oldPassword)) {
+                            Toast.makeText(UserActivity.this, "Enter your current password", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (newPassword.length() < 6) {
+                            Toast.makeText(UserActivity.this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        dialog.dismiss();
+                        updatePassword(oldPassword, newPassword);
+                    }
+                });
+
+
+               /*passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //extract email and send the reset link
-                        String newPassword = resetPassword.getText().toString();
+                        String newPassword = newPasswordEt.getText().toString();
                         user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -183,9 +223,41 @@ public class UserActivity extends AppCompatActivity {
                 i.putExtra("bio", bio.getText().toString());
                 startActivity(i);
             }
+        });*/
+            }
         });
     }
 
+
+    //update password
+    private void updatePassword(String oldPassword, String newPassword) {
+        //get current user
+        FirebaseUser user = fAuth.getCurrentUser();
+        //before change password re authentication
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), oldPassword);
+        user.reauthenticate(authCredential).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                 user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                     @Override
+                     public void onSuccess(Void aVoid) {
+                         Toast.makeText(UserActivity.this, "Password Updated", Toast.LENGTH_SHORT).show();
+                     }
+                 }).addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull @NotNull Exception e) {
+                         Toast.makeText(UserActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                     }
+                 });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(UserActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
 
     public void logout(View view) {
