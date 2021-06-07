@@ -212,6 +212,10 @@ public class UserActivity extends AppCompatActivity {
                 passwordResetDialog.create().show();
 
             }
+        });*/
+
+
+            }
         });
 
         changeProfile.setOnClickListener(new View.OnClickListener() {
@@ -222,8 +226,6 @@ public class UserActivity extends AppCompatActivity {
                 i.putExtra("fullName", fullName.getText().toString());
                 i.putExtra("bio", bio.getText().toString());
                 startActivity(i);
-            }
-        });*/
             }
         });
     }
