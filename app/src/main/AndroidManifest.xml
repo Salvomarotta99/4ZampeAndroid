@@ -12,9 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.4ZampeAndroid">
-        <activity android:name=".EditProfile"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".EditProfile"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +38,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".ScoreActivity"
             android:screenOrientation="portrait"></activity>
+
+
 
         <meta-data
             android:name="preloaded_fonts"
