@@ -5,53 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_200"
-    tools:context=".SplashActivity">
+    tools:context=".SplashActivity"
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ImageCV"
         android:layout_width="wrap_content"
-        android:layout_height="278dp"
-        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:clipToPadding="true"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="0dp">
+        android:layout_centerHorizontal="true"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/green_200">
 
-        <LinearLayout
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/QTimg"
             android:layout_width="match_parent"
-            android:layout_height="286dp"
-            android:background="@color/green_200"
-            android:orientation="vertical">
+            android:layout_height="350dp"
+            android:contentDescription="mr dog"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/logo_definitivo_non_in_rilievo" />
 
-            <ImageView
-                android:id="@+id/QTimg"
+        <TextView
+            android:id="@+id/titoloApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/QTimg"
+            android:fontFamily="@font/carter_one"
+            android:layout_marginTop="-40dp"
+            android:text="4Zampe"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="55sp"
+            android:textStyle="bold"
+            android:typeface="normal"/>
+
+            <TextView
+                android:id="@+id/versioneApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="mr dog"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/logo_definitivo_non_in_rilievo" />
-        </LinearLayout>
+                android:layout_below="@+id/titoloApp"
+                android:fontFamily="@font/carter_one"
+                android:layout_marginTop="40dp"
+                android:text="Versione 1.0.0"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="15dp"
+                android:textStyle="normal"
+                android:typeface="normal"
+                android:textColor="@color/grey_bg"/>
+        </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ImageCV"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/carter_one"
-        android:text="4Zampe"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="55sp"
-        android:textStyle="bold"
-        android:typeface="normal" />
 
 </RelativeLayout>
