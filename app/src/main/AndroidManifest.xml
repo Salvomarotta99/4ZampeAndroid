@@ -21,13 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".UserActivity"></activity>
-        <activity android:name=".RegistrationActivity"></activity>
-        <activity android:name=".DogActivity"></activity>
-        <activity android:name=".DogCatActivity"></activity>
-        <activity android:name=".CatActivity"></activity>
-        <activity android:name=".ScoreActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".UserActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".RegistrationActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".DogActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".DogCatActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".CatActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ScoreActivity"
+            android:screenOrientation="portrait"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
