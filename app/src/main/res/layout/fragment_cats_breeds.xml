@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/navy_500"
+    android:backgroundTint="@color/teal_700"
     tools:context=".Views.BreedsCatsFragment">
 
 
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        android:indeterminateTint="@color/navy_500"
+        android:indeterminateTint="@color/teal_700"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         />
@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:linksClickable="true"
         android:text="Riprova"
-        android:textColor="@color/navy_500"
+        android:textColor="@color/teal_700"
         />
 
     <androidx.recyclerview.widget.RecyclerView

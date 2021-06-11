@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_200"
+    android:background="@color/white"
     tools:context=".SplashActivity"
     >
 
@@ -15,7 +15,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/green_200">
+        app:cardBackgroundColor="@color/white">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,6 +37,7 @@
             android:layout_below="@+id/QTimg"
             android:fontFamily="@font/carter_one"
             android:layout_marginTop="-40dp"
+            android:textColor="@color/light_green"
             android:text="4Zampe"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -57,7 +58,7 @@
                 android:textSize="15dp"
                 android:textStyle="normal"
                 android:typeface="normal"
-                android:textColor="@color/grey_bg"/>
+                android:textColor="@color/green_700"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

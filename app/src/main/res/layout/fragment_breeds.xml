@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/navy_500"
+    android:backgroundTint="@color/teal_700"
     tools:context=".Views.BreedsFragment">
 
 
@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        android:indeterminateTint="@color/navy_500"
+        android:indeterminateTint="@color/ligh_blue"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
     />
@@ -35,7 +35,7 @@
         android:layout_below="@+id/is_connected"
         android:layout_centerHorizontal="true"
         android:linksClickable="true"
-        android:textColor="@color/navy_500"
+        android:textColor="@color/ligh_blue"
         android:text="Riprova"
         />
 

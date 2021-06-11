@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/navy_500"
+    android:backgroundTint="@color/green_500"
     tools:context=".Views.BreedsFragment">
 
     <com.google.android.material.tabs.TabLayout
@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="fixed"
-        app:tabIndicatorColor="@color/navy_500"
-        app:tabTextColor="@color/navy_500"
+        app:tabIndicatorColor="@color/green_500"
+        app:tabTextColor="@color/green_700"
         >
         <com.google.android.material.tabs.TabItem
             android:id="@+id/dogTab"

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //back button in toolbar
         getSupportActionBar().setTitle("4Zampe");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
 
         BottomNavigationView btnNav = findViewById(R.id.bottom_navigation);
         btnNav.setOnNavigationItemSelectedListener(navListener);

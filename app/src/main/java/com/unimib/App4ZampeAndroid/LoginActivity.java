@@ -2,6 +2,9 @@ package com.unimib.App4ZampeAndroid;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -65,8 +68,16 @@ public class LoginActivity extends AppCompatActivity {
         forgotTextLink = findViewById(R.id.forgotPassword);
         mSkip = findViewById(R.id.skipAuth);
 
-        //back button in toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        //Arrow color
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(R.color.green_500), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+        //Action bar settings
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+
 
 
         if(fAuth.getCurrentUser() != null){

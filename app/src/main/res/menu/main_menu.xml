@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/action_user"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_baseline_person_24_w"
         android:title="@string/action_search"
         app:showAsAction="always">
 
