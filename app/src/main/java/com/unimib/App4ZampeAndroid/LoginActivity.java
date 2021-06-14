@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -94,17 +95,17 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is required");
+                    mEmail.setError("Inserire email");
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    mPassword.setError("Password is required");
+                    mPassword.setError("Inserire la password!");
                     return;
                 }
 
                 if(password.length() < 6){
-                    mPassword.setError("Password must be >=6 characters");
+                    mPassword.setError("La password deve contenere almeno 6 caratteri!");
                     return;
                 }
 
@@ -113,11 +114,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "logged is successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Hai effetuato l'accesso!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             finish();
                         }else{
-                            Toast.makeText(LoginActivity.this, "error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Errore "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -137,12 +138,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText resetMail = new EditText(v.getContext());
-                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
-                passwordResetDialog.setTitle("Reset Password ?");
-                passwordResetDialog.setMessage("Enter your Email To received reset Link");
+                MaterialAlertDialogBuilder passwordResetDialog = new MaterialAlertDialogBuilder(v.getContext());
+                passwordResetDialog.setTitle("Resetta password ?");
+                passwordResetDialog.setMessage("Inserisci la tua email per ricevere il link");
                 passwordResetDialog.setView(resetMail);
 
-                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                passwordResetDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //extract email and send the reset link
@@ -150,12 +151,12 @@ public class LoginActivity extends AppCompatActivity {
                         fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(LoginActivity.this, "Reset link sent to your Email", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Link di reset inviato alla tua email", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull @NotNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Error! Reset Link is not sent" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Errore! Il link non è stato mandato!" + e.getMessage(),Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -169,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-                passwordResetDialog.create().show();
+                passwordResetDialog.show();
 
             }
         });

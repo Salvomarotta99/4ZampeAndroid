@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -191,11 +193,25 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
             startTimer();
         } else {
             if(TIMER_IS_ATIVE) {
-                Intent intent = new Intent(CatActivity.this, ScoreActivity.class);
-                intent.putExtra("SCORE", String.valueOf(score));
-                intent.putExtra("from", "Cat");
-                startActivity(intent);
-                CatActivity.this.finish();
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(CatActivity.this);
+                builder.setTitle("Punteggio:" +score);
+                builder.setMessage("Quiz completato con successo!");
+                builder.setPositiveButton("Rigioca", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("Esci", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
+                    }
+                });
+                builder.show();
             }
         }
     }

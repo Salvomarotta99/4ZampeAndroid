@@ -18,33 +18,30 @@
 
         <menu>
 
-
             <item
                 android:id="@+id/action_user_profile"
-                android:title="UserProfile"
+                android:title="Profilo"
                 app:actionViewClass="androidx.appcompat.widget.SearchView"
                 app:showAsAction="never" />
 
 
             <item
                 android:id="@+id/action_logout"
-                android:title="logOut"
+                android:title="Disconettit"
                 app:actionViewClass="androidx.appcompat.widget.SearchView"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/action_login"
-                android:title="logIn"
+                android:title="Accedi"
                 app:actionViewClass="androidx.appcompat.widget.SearchView"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/action_registration"
-                android:title="registration"
+                android:title="Registrati"
                 app:actionViewClass="androidx.appcompat.widget.SearchView"
                 app:showAsAction="never" />
-
-
 
         </menu>
 

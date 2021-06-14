@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/registrazione_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:text="Registrazione"
@@ -24,6 +24,14 @@
         android:textSize="30dp"
         android:layout_marginTop="50dp"
         />
+
+    <ImageView
+        android:layout_width="71dp"
+        android:layout_height="79dp"
+        android:background="@drawable/zampa"
+        android:layout_toRightOf="@id/registrazione_title"
+        android:layout_marginTop="30dp"
+        ></ImageView>
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,8 +50,8 @@
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="@color/green_700"
-                android:textColorHint="@color/green_700"
+                android:textColor="@color/green_500"
+                android:textColorHint="@color/green_500"
                 android:textSize="20sp"
                 android:layout_below="@id/registrazione_title"/>
 
@@ -84,8 +92,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/green_700"
-        android:textColorHint="@color/green_700"
+        android:textColor="@color/green_500"
+        android:textColorHint="@color/green_500"
         android:textSize="20sp"
         android:layout_below="@id/editMailRegistration"/>
 
@@ -114,14 +122,14 @@
             android:id="@+id/registrati_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="50dp"
             android:elevation="4dp"
             android:text="Registrati"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/green_500"
-            app:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/light_green"
             app:cornerRadius="20dp"
             app:elevation="4dp"
             android:layout_below="@id/editPswConfirmRegistration"/>
@@ -140,7 +148,32 @@
                 android:textAlignment="center"
                 app:backgroundTint="@color/white"
                 app:cornerRadius="20dp"
-                app:elevation="4dp" />
+                app:elevation="4dp"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/versioneAppReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:text="Versione 1.0.0 (demo)"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="20dp"
+        app:elevation="4dp"
+        android:textStyle="italic"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:background="@drawable/sfondo_cane_gatto"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        ></ImageView>
 
 
 </RelativeLayout>

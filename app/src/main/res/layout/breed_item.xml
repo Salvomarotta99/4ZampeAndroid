@@ -27,9 +27,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="120dp"
-                android:clipToPadding="true"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="2dp">
+                app:cardElevation="2dp"
+                >
 
                 <ImageView
                     android:id="@+id/breed_image"
@@ -55,7 +55,7 @@
                     android:padding="5dp"
                     android:text="@string/breed_nameText"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     />
 

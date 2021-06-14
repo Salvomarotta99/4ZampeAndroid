@@ -101,27 +101,27 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(nome)){
-                    mFullName.setError("Name is required");
+                    mFullName.setError("Inserire il nome");
                     return;
                 }
 
                 if(TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is required");
+                    mEmail.setError("Inserire la email");
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    mPassword.setError("Password is required");
+                    mPassword.setError("Inserire la password");
                     return;
                 }
 
                 if(!password.equals(passwordConfirm)){
-                    mPasswordConfirm.setError("Password must be confirmed");
+                    mPasswordConfirm.setError("La password deve essere confermata!");
                     return;
                 }
 
                 if(password.length() < 6){
-                    mPassword.setError("Password must be >=6 characters");
+                    mPassword.setError("La password deve contenere almeno 6 caratteri!");
                     return;
                 }
 
@@ -138,12 +138,12 @@ public class RegistrationActivity extends AppCompatActivity {
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(RegistrationActivity.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegistrationActivity.this, "Email di verifica inviata!", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull @NotNull Exception e) {
-                                    Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
+                                    Log.d(TAG, "Email non inviata, error: " + e.getMessage());
                                 }
                             });
 
