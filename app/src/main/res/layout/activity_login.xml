@@ -47,7 +47,8 @@
                 android:textColor="@color/green_500"
                 android:textColorHint="@color/green_500"
                 android:textSize="20sp"
-                android:layout_below="@id/login_title"/>
+                android:layout_below="@id/login_title"
+                tools:ignore="MissingClass" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editPswLogin"
@@ -68,7 +69,8 @@
                 android:paddingBottom="10dp"
                 android:textColor="@color/green_500"
                 android:textColorHint="@color/green_500"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="MissingClass" />
 
 
             <View
@@ -96,7 +98,8 @@
         android:textColor="@color/green_500"
         app:backgroundTint="@color/white"
         app:cornerRadius="20dp"
-        app:elevation="4dp" />
+        app:elevation="4dp"
+        tools:ignore="MissingClass" />
 
     <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/forgotPassword"
@@ -108,7 +111,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:text="Password dimenticata?"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+        tools:ignore="MissingClass" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/registrazione_btn"
@@ -123,7 +127,8 @@
                 android:text="Registrazione"
                 android:textColor="@color/white"
                 app:cornerRadius="20dp"
-                app:elevation="4dp"/>
+                app:elevation="4dp"
+                tools:ignore="MissingClass" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/skipAuth"
@@ -139,7 +144,8 @@
                 android:backgroundTint="@color/light_green"
                 android:textColor="@color/white"
                 app:cornerRadius="20dp"
-                app:elevation="4dp" />
+                app:elevation="4dp"
+                tools:ignore="MissingClass" />
 
 
     <com.google.android.material.textview.MaterialTextView

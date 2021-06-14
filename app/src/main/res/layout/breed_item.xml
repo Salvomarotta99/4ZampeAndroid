@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="190dp"
-    android:layout_margin="5dp"
-    android:orientation="vertical"
-    android:paddingStart="5dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="10dp"
     >
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="160dp"
-        android:layout_height="180dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:elevation="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="6dp"
-        >
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -28,15 +29,13 @@
                 android:layout_width="150dp"
                 android:layout_height="120dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
-                >
+                app:cardElevation="2dp">
 
                 <ImageView
                     android:id="@+id/breed_image"
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:scaleType="centerCrop"
-                   />
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
 
@@ -44,20 +43,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="vertical"
-               >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/breed_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:padding="5dp"
                     android:text="@string/breed_nameText"
                     android:textAlignment="center"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -66,4 +63,4 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-</GridLayout>
+</LinearLayout>
