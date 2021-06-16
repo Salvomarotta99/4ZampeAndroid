@@ -52,7 +52,7 @@
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/green_200"
             app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
+            app:cardElevation="1dp"
             app:contentPaddingBottom="10dp">
 
             <RelativeLayout
@@ -170,7 +170,7 @@
                     android:onClick="logout"
                     android:text="logout"
                     app:cornerRadius="20dp"
-                    app:backgroundTint="@color/green_700"
+                    app:backgroundTint="@color/green_500"
                     app:elevation="2dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -183,6 +183,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="40dp"
                     app:cornerRadius="20dp"
+                    android:backgroundTint="@color/light_green"
                     android:text="reset password"
                     app:elevation="2dp" />
 

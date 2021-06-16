@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:layout_marginBottom="10dp"
     tools:context=".DonazioniFragment">
 
 
@@ -35,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/donBTEnpa"
                         android:layout_width="150dp"
                         android:layout_height="56dp"
@@ -46,9 +47,11 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView2Enpa"
-                        android:elevation="2dp"/>
+                        android:elevation="2dp"
+                        app:cornerRadius="20dp"
+                        />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textViewEnpa"
                         android:layout_width="356dp"
                         android:layout_height="77dp"
@@ -59,7 +62,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView3Enpa" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView2Enpa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -123,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/donBTMondogatto"
                         android:layout_width="150dp"
                         android:layout_height="56dp"
@@ -135,7 +138,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView2MondoGatto"
-                        android:elevation="2dp"/>
+                        android:elevation="2dp"
+                        app:cornerRadius="20dp"/>
 
                     <TextView
                         android:id="@+id/textView1MondoGatto"
@@ -212,7 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/donBTSaveDog"
                         android:layout_width="150dp"
                         android:layout_height="56dp"
@@ -223,7 +227,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView2Savedog"
-                        android:elevation="2dp"/>
+                        android:elevation="2dp"
+                        app:cornerRadius="20dp"/>
 
                     <TextView
                         android:id="@+id/textView1Savedog"
@@ -292,7 +297,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:padding="10dp"
                 app:cardCornerRadius="30dp"
                 app:cardElevation="2dp">
@@ -301,7 +306,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/donBTOP"
                         android:layout_width="150dp"
                         android:layout_height="56dp"
@@ -312,7 +317,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView2Oipa"
-                        android:elevation="2dp"/>
+                        android:elevation="2dp"
+                        app:cornerRadius="20dp"/>
 
                     <TextView
                         android:id="@+id/textViewOipa"
