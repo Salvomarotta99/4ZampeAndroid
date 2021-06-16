@@ -9,29 +9,20 @@
     android:visibility="visible"
     tools:context=".DogActivity">
 
-    <TextView
-        android:id="@+id/txtQuest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/QuizCV"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="9dp"
-        android:background="@color/white"
-        android:text="@string/stringaDomanda"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/contentQuizDog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbarD"
+        android:layout_centerVertical="true"
+        >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ImageCV"
         android:layout_width="339dp"
         android:layout_height="216dp"
         android:layout_above="@+id/txtQuest"
-        android:layout_below="@+id/topbarD"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
@@ -54,6 +45,23 @@
                 android:scaleType="centerCrop" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtQuest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/QuizCV"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="9dp"
+            android:background="@color/white"
+            android:text="@string/stringaDomanda"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/QuizCV"
@@ -126,6 +134,8 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/topbarD"
