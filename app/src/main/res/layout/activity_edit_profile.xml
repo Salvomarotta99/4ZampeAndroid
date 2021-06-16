@@ -18,19 +18,19 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_centerHorizontal="true"
-            app:cardElevation="20dp"
+            app:cardElevation="1dp"
             app:cardCornerRadius="50dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profileImageView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        app:cardElevation="20dp"
-        app:cardCornerRadius="50dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:scaleType="centerCrop" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            app:cardElevation="20dp"
+            app:cardCornerRadius="50dp"
+            tools:srcCompat="@tools:sample/avatars"
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 
@@ -81,7 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/profileBio"
-            android:elevation="4dp"
+            android:elevation="2dp"
+            app:cornerRadius="20dp"
             android:backgroundTint="@color/light_green"
             android:layout_marginStart="100dp"
             android:layout_marginTop="50dp"

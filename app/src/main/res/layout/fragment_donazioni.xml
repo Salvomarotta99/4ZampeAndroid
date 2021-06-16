@@ -29,7 +29,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="8dp">
+                app:cardElevation="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -45,7 +45,8 @@
                         android:text="Vai a ENPA.it"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2Enpa" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView2Enpa"
+                        android:elevation="2dp"/>
 
                     <TextView
                         android:id="@+id/textViewEnpa"
@@ -85,7 +86,6 @@
                         android:id="@+id/DonazioniCVEnpa"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
@@ -117,7 +117,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="8dp">
+                app:cardElevation="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -134,7 +134,8 @@
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2MondoGatto" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView2MondoGatto"
+                        android:elevation="2dp"/>
 
                     <TextView
                         android:id="@+id/textView1MondoGatto"
@@ -174,7 +175,6 @@
                         android:id="@+id/DonazioniCVMondogatto"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
@@ -206,7 +206,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="8dp">
+                app:cardElevation="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -222,7 +222,8 @@
                         android:text="Vai a SaveDog.eu"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2Savedog" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView2Savedog"
+                        android:elevation="2dp"/>
 
                     <TextView
                         android:id="@+id/textView1Savedog"
@@ -263,7 +264,6 @@
                         android:id="@+id/DonazioniCVSavedog"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
@@ -295,7 +295,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="8dp">
+                app:cardElevation="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -311,7 +311,8 @@
                         android:text="Vai a OIPA.it"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2Oipa" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView2Oipa"
+                        android:elevation="2dp"/>
 
                     <TextView
                         android:id="@+id/textViewOipa"

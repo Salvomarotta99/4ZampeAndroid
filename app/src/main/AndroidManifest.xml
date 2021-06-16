@@ -36,9 +36,6 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".CatActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".ScoreActivity"
-            android:screenOrientation="portrait"></activity>
-
 
 
         <meta-data

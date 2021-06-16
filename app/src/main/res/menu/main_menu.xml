@@ -27,7 +27,7 @@
 
             <item
                 android:id="@+id/action_logout"
-                android:title="Disconettit"
+                android:title="Disconettiti"
                 app:actionViewClass="androidx.appcompat.widget.SearchView"
                 app:showAsAction="never" />
 
