@@ -30,9 +30,9 @@
                 android:layout_height="120dp"
                 app:cardCornerRadius="20dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/breed_image"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
