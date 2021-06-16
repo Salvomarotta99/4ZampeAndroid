@@ -39,12 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/Edit_ProfileCV1"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="3dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="50dp"
+            android:textColor="@color/green_500"
             android:hint="Nome"
-            android:text="Nome"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/green_500" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/profileEmailAddress"
@@ -54,9 +56,11 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
+            android:drawableLeft="@drawable/ic_baseline_local_post_office_24"
+            android:drawablePadding="3dp"
+            android:textColor="@color/green_500"
             android:hint="E-mail"
-            android:text="E-mail"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/green_500" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/profileBio"
@@ -66,9 +70,11 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
+            android:drawableLeft="@drawable/ic_baseline_text_snippet_24"
+            android:drawablePadding="3dp"
             android:hint="Bio"
-            android:text="Bio"
-            android:textColorHint="@color/black" />
+            android:textColor="@color/green_500"
+            android:textColorHint="@color/green_500" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveProfileInfo"
@@ -76,11 +82,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profileBio"
             android:elevation="4dp"
+            android:backgroundTint="@color/light_green"
             android:layout_marginStart="100dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="100dp"
-            android:fontFamily="@font/fontdiner_swanky"
-            android:text="Save" />
+            android:text="Salva" />
 
 
     </RelativeLayout>
