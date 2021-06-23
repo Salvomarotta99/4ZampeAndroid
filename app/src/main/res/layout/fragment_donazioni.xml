@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_marginBottom="10dp"
-    tools:context=".DonazioniFragment">
+    tools:context=".views.fragment.DonazioniFragment">
 
 
     <ScrollView
@@ -43,13 +43,12 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="10dp"
+                        android:elevation="2dp"
                         android:text="Vai a ENPA.it"
+                        app:cornerRadius="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2Enpa"
-                        android:elevation="2dp"
-                        app:cornerRadius="20dp"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/textView2Enpa" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textViewEnpa"
@@ -133,13 +132,13 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="10dp"
+                        android:elevation="2dp"
                         android:text="Vai a Mondogatto.it"
                         android:textSize="12sp"
+                        app:cornerRadius="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2MondoGatto"
-                        android:elevation="2dp"
-                        app:cornerRadius="20dp"/>
+                        app:layout_constraintTop_toBottomOf="@+id/textView2MondoGatto" />
 
                     <TextView
                         android:id="@+id/textView1MondoGatto"
@@ -223,12 +222,12 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="10dp"
+                        android:elevation="2dp"
                         android:text="Vai a SaveDog.eu"
+                        app:cornerRadius="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2Savedog"
-                        android:elevation="2dp"
-                        app:cornerRadius="20dp"/>
+                        app:layout_constraintTop_toBottomOf="@+id/textView2Savedog" />
 
                     <TextView
                         android:id="@+id/textView1Savedog"
@@ -313,12 +312,12 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="10dp"
+                        android:elevation="2dp"
                         android:text="Vai a OIPA.it"
+                        app:cornerRadius="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2Oipa"
-                        android:elevation="2dp"
-                        app:cornerRadius="20dp"/>
+                        app:layout_constraintTop_toBottomOf="@+id/textView2Oipa" />
 
                     <TextView
                         android:id="@+id/textViewOipa"

@@ -6,29 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/teal_700"
-    tools:context=".Views.BreedsCatsFragment">
-
-
+    tools:context=".views.fragment.BreedsCatsFragment">
 
 
     <ProgressBar
         android:id="@+id/loadingCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:indeterminateTint="@color/teal_700"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        />
+        android:indeterminateTint="@color/teal_700"
+        android:visibility="visible" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/is_connected_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connessione internet assente"
-        android:layout_centerVertical="true"
+        android:layout_below="@id/loadingCat"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/loadingCat"/>
+        android:layout_centerVertical="true"
+        android:text="Connessione internet assente" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/refresh_cat"
@@ -38,8 +35,7 @@
         android:layout_centerHorizontal="true"
         android:linksClickable="true"
         android:text="Riprova"
-        android:textColor="@color/teal_700"
-        />
+        android:textColor="@color/teal_700" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/breed_list_cat"

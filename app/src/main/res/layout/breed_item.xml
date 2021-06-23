@@ -3,17 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:gravity="center"
-    android:padding="10dp"
-    >
+    android:orientation="horizontal"
+    android:padding="10dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:elevation="5dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp">
 
@@ -49,8 +48,8 @@
                     android:layout_width="160dp"
                     android:layout_height="50dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:padding="5dp"
                     android:gravity="center"
+                    android:padding="5dp"
                     android:text="@string/breed_nameText"
                     android:textAlignment="center"
                     android:textSize="14sp"

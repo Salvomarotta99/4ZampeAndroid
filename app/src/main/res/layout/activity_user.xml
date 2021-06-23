@@ -9,196 +9,196 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".UserActivity">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/User_ProfileCV1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:cardElevation="1dp"
-        app:cardCornerRadius="50dp">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profileImage"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center"
-            tools:src="@tools:sample/avatars"
-            android:scaleType="centerCrop" />
-
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_below="@id/User_ProfileCV1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".views.activity.UserActivity">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/User_ProfileCV2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:id="@+id/User_ProfileCV1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/green_200"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="1dp"
-            app:contentPaddingBottom="10dp">
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="1dp">
 
-            <RelativeLayout
-                android:id="@+id/layoutCardView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImage"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
 
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/nomeProfilo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/login_btn"
-                    android:drawableLeft="@drawable/ic_baseline_person_24_user"
-                    android:drawablePadding="3dp"
-                    android:ems="20"
-                    android:hint="Nome"
-                    android:inputType="textPersonName"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/mailProfilo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/nomeProfilo"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/login_btn"
-                    android:drawableLeft="@drawable/ic_baseline_local_post_office_24_user"
-                    android:drawablePadding="3dp"
-                    android:ems="20"
-                    android:hint="E-mail"
-                    android:inputType="textPersonName"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="20sp" />
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Bio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/mailProfilo"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/login_btn"
-                    android:drawableLeft="@drawable/ic_baseline_description_24"
-                    android:drawablePadding="3dp"
-                    android:autoSizeTextType="uniform"
-                    android:textAlignment="textStart"
-                    android:ems="20"
-                    android:hint="Bio"
-                    android:inputType="textPersonName"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="10dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/verifyMsg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/Bio"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="E-mail non verificata!"
-                    android:textAlignment="center"
-                    android:textColor="#C2185B"
-                    android:visibility="gone" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/resendCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/Bio"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="40dp"
-                    android:text="verifica ora"
-                    app:cornerRadius="20dp"
-                    android:visibility="gone"
-                    app:elevation="2dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/logout_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/Bio"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="85dp"
-                    android:layout_marginEnd="40dp"
-                    android:onClick="logout"
-                    android:text="logout"
-                    app:cornerRadius="20dp"
-                    app:backgroundTint="@color/green_500"
-                    app:elevation="2dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/resetPasswordLocal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/logout_btn"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="40dp"
-                    app:cornerRadius="20dp"
-                    android:backgroundTint="@color/light_green"
-                    android:text="reset password"
-                    app:elevation="2dp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/changeProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/resetPasswordLocal"
-                    android:layout_centerHorizontal="true"
-                    android:text="Modifica Profilo"
-                    android:textAlignment="center" />
-
-            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/User_ProfileCV1"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/User_ProfileCV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/green_200"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="1dp"
+                app:contentPaddingBottom="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/layoutCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/nomeProfilo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/login_btn"
+                        android:drawableLeft="@drawable/ic_baseline_person_24_user"
+                        android:drawablePadding="3dp"
+                        android:ems="20"
+                        android:hint="Nome"
+                        android:inputType="textPersonName"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mailProfilo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/nomeProfilo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/login_btn"
+                        android:drawableLeft="@drawable/ic_baseline_local_post_office_24_user"
+                        android:drawablePadding="3dp"
+                        android:ems="20"
+                        android:hint="E-mail"
+                        android:inputType="textPersonName"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp" />
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/mailProfilo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="20dp"
+                        android:autoSizeTextType="uniform"
+                        android:background="@drawable/login_btn"
+                        android:drawableLeft="@drawable/ic_baseline_description_24"
+                        android:drawablePadding="3dp"
+                        android:ems="20"
+                        android:hint="Bio"
+                        android:inputType="textPersonName"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/verifyMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Bio"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:text="E-mail non verificata!"
+                        android:textAlignment="center"
+                        android:textColor="#C2185B"
+                        android:visibility="gone" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/resendCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Bio"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="40dp"
+                        android:text="verifica ora"
+                        android:visibility="gone"
+                        app:cornerRadius="20dp"
+                        app:elevation="2dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/logout_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Bio"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="85dp"
+                        android:layout_marginEnd="40dp"
+                        android:onClick="logout"
+                        android:text="logout"
+                        app:backgroundTint="@color/green_500"
+                        app:cornerRadius="20dp"
+                        app:elevation="2dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/resetPasswordLocal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/logout_btn"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="40dp"
+                        android:backgroundTint="@color/light_green"
+                        android:text="reset password"
+                        app:cornerRadius="20dp"
+                        app:elevation="2dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/changeProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/resetPasswordLocal"
+                        android:layout_centerHorizontal="true"
+                        android:text="Modifica Profilo"
+                        android:textAlignment="center" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
     </RelativeLayout>
 </ScrollView>

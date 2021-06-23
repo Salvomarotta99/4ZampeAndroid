@@ -5,61 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".SplashActivity"
-    >
+    tools:context=".views.activity.SplashActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ImageCV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/white">
+        android:layout_centerVertical="true"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="0dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
 
-        <ImageView
-            android:id="@+id/QTimg"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:contentDescription="mr dog"
-            android:scaleType="centerCrop"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/logo_definitivo_non_in_rilievo" />
+            <ImageView
+                android:id="@+id/QTimg"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="mr dog"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/logo_definitivo_non_in_rilievo" />
 
-        <TextView
-            android:id="@+id/titoloApp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/QTimg"
-            android:fontFamily="@font/carter_one"
-            android:layout_marginTop="-40dp"
-            android:textColor="@color/light_green"
-            android:text="4Zampe"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="55sp"
-            android:textStyle="bold"
-            android:typeface="normal"/>
+            <TextView
+                android:id="@+id/titoloApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/QTimg"
+                android:layout_marginTop="-40dp"
+                android:fontFamily="@font/carter_one"
+                android:text="4Zampe"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/light_green"
+                android:textSize="55sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
 
             <TextView
                 android:id="@+id/versioneApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/titoloApp"
-                android:fontFamily="@font/carter_one"
                 android:layout_marginTop="40dp"
+                android:fontFamily="@font/carter_one"
                 android:text="Versione 1.0.0"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/green_700"
                 android:textSize="15dp"
                 android:textStyle="normal"
-                android:typeface="normal"
-                android:textColor="@color/green_700"/>
+                android:typeface="normal" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

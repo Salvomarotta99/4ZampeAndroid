@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:visibility="visible"
-    tools:context=".DogActivity">
+    tools:context=".views.activity.DogActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/topbarD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/green_200"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        app:cardBackgroundColor="@color/green_200">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:gravity="center"
-                android:text="Score:"
+                android:text="@string/score"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -39,7 +39,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
-                android:text="1 di 5"
+                android:text="@string/_1_di_5"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -54,7 +54,7 @@
                 android:layout_width="37dp"
                 android:layout_height="41dp"
                 android:layout_marginEnd="20dp"
-                android:text="10"
+                android:text="@string/_10"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -68,12 +68,11 @@
         android:id="@+id/contentQuizDog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/topbarD"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:gravity="center"
-        android:layout_below="@id/topbarD"
-        >
+        android:gravity="center">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ImageCV"
@@ -85,8 +84,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:clipToPadding="true"
-            app:cardCornerRadius="30dp"
-            android:elevation="1dp">
+            android:elevation="1dp"
+            app:cardCornerRadius="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,7 +96,7 @@
                     android:id="@+id/QTimg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="mr dog"
+                    android:contentDescription="@string/mr_dog"
                     android:scaleType="centerCrop" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.4ZampeAndroid">
-        <activity android:name=".EditProfile"
+        <activity android:name=".views.activity.EditProfile"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".LoginActivity"
+        <activity android:name=".views.activity.LoginActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".SplashActivity"
+        <activity android:name=".views.activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,17 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".views.activity.MainActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".UserActivity"
+        <activity android:name=".views.activity.UserActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".RegistrationActivity"
+        <activity android:name=".views.activity.RegistrationActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".DogActivity"
+        <activity android:name=".views.activity.DogActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".DogCatActivity"
+        <activity android:name=".views.activity.DogCatActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".CatActivity"
+        <activity android:name=".views.activity.CatActivity"
             android:screenOrientation="portrait"></activity>
 
 

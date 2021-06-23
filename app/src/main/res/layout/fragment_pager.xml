@@ -6,39 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/green_500"
-    tools:context=".Views.BreedsFragment">
+    tools:context=".views.fragment.BreedsFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
         app:tabIndicatorColor="@color/green_500"
-        app:tabTextColor="@color/green_700"
-        >
+        app:tabMode="fixed"
+        app:tabTextColor="@color/green_700">
+
         <com.google.android.material.tabs.TabItem
             android:id="@+id/dogTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cani"
-            />
+            android:text="@string/cani" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/catTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gatti"
             android:focusedByDefault="true"
-            />
+            android:text="@string/gatti" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.viewpager2.widget.ViewPager2 xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabView"/>
-
+        android:layout_below="@+id/tabView" />
 
 
 </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".views.activity.RegistrationActivity">
 
     <FrameLayout
         android:id="@+id/registrazione_layout"
@@ -17,69 +17,68 @@
         android:id="@+id/registrazione_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Registrazione"
-        android:layout_marginStart="50dp"
         android:textColor="@color/black"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"
-        />
+        android:textSize="30dp" />
 
     <ImageView
         android:layout_width="71dp"
         android:layout_height="79dp"
-        android:background="@drawable/zampa"
-        android:layout_toRightOf="@id/registrazione_title"
         android:layout_marginTop="30dp"
-        ></ImageView>
+        android:layout_toRightOf="@id/registrazione_title"
+        android:background="@drawable/zampa"></ImageView>
 
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editNameRegistration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
-                android:drawablePadding="3dp"
-                android:ems="20"
-                android:hint="Username"
-                android:inputType="textPersonName"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:textColor="@color/green_500"
-                android:textColorHint="@color/green_500"
-                android:textSize="20sp"
-                android:layout_below="@id/registrazione_title"/>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editNameRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registrazione_title"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="3dp"
+        android:ems="20"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/green_500"
+        android:textColorHint="@color/green_500"
+        android:textSize="20sp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editMailRegistration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/editNameRegistration"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
-                android:drawableLeft="@drawable/ic_baseline_local_post_office_24"
-                android:drawablePadding="3dp"
-                android:ems="20"
-                android:hint="Email"
-                android:inputType="textWebEmailAddress"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:textColor="@color/green_500"
-                android:textColorHint="@color/green_500"
-                android:textSize="20sp" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editMailRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editNameRegistration"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:drawableLeft="@drawable/ic_baseline_local_post_office_24"
+        android:drawablePadding="3dp"
+        android:ems="20"
+        android:hint="Email"
+        android:inputType="textWebEmailAddress"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/green_500"
+        android:textColorHint="@color/green_500"
+        android:textSize="20sp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editPswRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/editMailRegistration"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
@@ -94,8 +93,7 @@
         android:paddingBottom="10dp"
         android:textColor="@color/green_500"
         android:textColorHint="@color/green_500"
-        android:textSize="20sp"
-        android:layout_below="@id/editMailRegistration"/>
+        android:textSize="20sp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editPswConfirmRegistration"
@@ -118,62 +116,61 @@
         android:textColorHint="@color/green_500"
         android:textSize="20sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/registrati_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="80dp"
-            android:elevation="2dp"
-            android:text="Registrati"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/light_green"
-            app:cornerRadius="20dp"
-            app:elevation="4dp"
-            android:layout_below="@id/editPswConfirmRegistration"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registrati_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editPswConfirmRegistration"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="80dp"
+        android:elevation="2dp"
+        android:text="Registrati"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/light_green"
+        app:cornerRadius="20dp"
+        app:elevation="4dp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/gotologin_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/registrati_btn"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="20dp"
-                android:elevation="4dp"
-                android:text="Già registrato? Accedi ora"
-                android:textAlignment="center"
-                app:backgroundTint="@color/white"
-                app:cornerRadius="20dp"
-                app:elevation="4dp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/gotologin_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registrati_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="4dp"
+        android:text="Già registrato? Accedi ora"
+        android:textAlignment="center"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="20dp"
+        app:elevation="4dp" />
 
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/versioneAppReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"
         android:elevation="4dp"
         android:text="Versione 1.0.0 (demo)"
+        android:textStyle="italic"
         app:backgroundTint="@color/white"
         app:cornerRadius="20dp"
-        app:elevation="4dp"
-        android:textStyle="italic"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="10dp"/>
+        app:elevation="4dp" />
 
     <ImageView
-        android:layout_marginTop="10dp"
         android:layout_width="100dp"
         android:layout_height="150dp"
-        android:background="@drawable/sfondo_cane_gatto"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        ></ImageView>
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/sfondo_cane_gatto"></ImageView>
 
 
 </RelativeLayout>
