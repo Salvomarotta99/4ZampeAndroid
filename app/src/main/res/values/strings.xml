@@ -64,24 +64,9 @@ e a donare ad ogni cane una vita dignitosa
     <string name="_1_di_5">1 di 5</string>
     <string name="_10">10</string>
     <string name="mr_dog">mr dog</string>
-    <string name="score">Score:</string>
-    <string name="_1_di_5">1 di 5</string>
-    <string name="_10">10</string>
-    <string name="mr_dog">mr dog</string>
-    <string name="score">Score:</string>
-    <string name="_1_di_5">1 di 5</string>
-    <string name="_10">10</string>
-    <string name="mr_dog">mr dog</string>
     <string name="nome">Nome</string>
     <string name="e_mail">E-mail</string>
     <string name="bio">Bio</string>
     <string name="salva">Salva</string>
     <string name="login">Login</string>
-    <string name="e_mail">E-mail</string>
-    <string name="password">Password</string>
-    <string name="accedi">Accedi</string>
-    <string name="password_dimenticata">Password dimenticata?</string>
-    <string name="registrazione">Registrazione</string>
-    <string name="non_ora">Non ora</string>
-    <string name="versione_1_0_0_demo">Versione 1.0.0 (demo)</string>
 </resources>
