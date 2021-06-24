@@ -51,7 +51,7 @@ public class BreedsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         setHasOptionsMenu(true); // Add this!
 
         breedsRepository = new BreedsRepository(requireActivity().getApplication(), lastUpdate);
@@ -112,36 +112,7 @@ public class BreedsFragment extends Fragment {
             BreedsViewModel breedsDogViewModel = new ViewModelProvider(this, new BreedsViewModelFactory(
                     requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
 
-        /*TabLayout tabLayout = view.findViewById(R.id.tabView);
 
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                System.out.println(tab.getPosition());
-                switch(tab.getPosition()){
-                    case 0:
-
-                    case 1:
-                        Fragment selectedFragment = new BreedsCatsFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_layout,
-                                        selectedFragment).commit();
-                }
-            }
-
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-*/
 
             loader.setVisibility(view.VISIBLE);
             breed_list.setVisibility(view.GONE);

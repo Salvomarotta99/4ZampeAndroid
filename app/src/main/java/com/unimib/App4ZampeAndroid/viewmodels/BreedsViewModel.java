@@ -27,11 +27,7 @@ public class BreedsViewModel extends AndroidViewModel {
         super(application);
         this.iBreedsRepository = iBreedsRepository;
     }
-    //private BreedsRepository breedsRepository;
 
-    /*public void queryRepo(String userId) {
-        breedsRepository = BreedsRepository.getInstance();
-    }*/
 
     public LiveData<List<Breed>> getBreedsListDog() {
         if(breedsDogList == null)

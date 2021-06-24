@@ -142,17 +142,15 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //EditText resetPassword = new EditText(v.getContext());
+
                 View view = getLayoutInflater().inflate(R.layout.dialog_update_password, null);
-                // AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
                 final EditText passwordEt = (EditText) view.findViewById(R.id.passwordEt);
                 final EditText newPasswordEt = (EditText) view.findViewById(R.id.newPasswordEt);
                 Button updatePasswordBtn = (Button) view.findViewById(R.id.updatePasswordBtn);
 
                 final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(UserActivity.this);
 
-                //passwordResetDialog.setTitle("Reset Password ?");
-                //passwordResetDialog.setMessage("Enter new Password");
+
                 passwordResetDialog.setView(view);
 
 
@@ -177,40 +175,6 @@ public class UserActivity extends AppCompatActivity {
                         updatePassword(oldPassword, newPassword);
                     }
                 });
-
-
-               /*passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //extract email and send the reset link
-                        String newPassword = newPasswordEt.getText().toString();
-                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(UserActivity.this,"Password reset successfully",Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull @NotNull Exception e) {
-                                Toast.makeText(UserActivity.this,"Password reset failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-
-                    }
-                });
-
-                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //close the dialog
-                    }
-                });
-
-                passwordResetDialog.create().show();
-
-            }
-        });*/
 
 
             }

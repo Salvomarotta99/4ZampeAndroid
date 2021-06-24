@@ -106,38 +106,7 @@ public class BreedsCatsFragment extends Fragment {
                     requireActivity().getApplication(), breedsRepository)).get(BreedsViewModel.class);
 
 
-           /* TabLayout tabLayout = view.findViewById(R.id.tabView);
-            tabLayout.selectTab(tabLayout.getTabAt(1));
 
-
-            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                @Override
-                public void onTabSelected(TabLayout.Tab tab) {
-                    System.out.println(tab.getPosition());
-                    switch(tab.getPosition()){
-                        case 0:
-                            Fragment selectedFragment = new BreedsFragment();
-                            getActivity().getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.fragment_layout,
-                                            selectedFragment).commit();
-                        case 1:
-
-                    }
-                }
-
-
-                @Override
-                public void onTabUnselected(TabLayout.Tab tab) {
-
-                }
-
-                @Override
-                public void onTabReselected(TabLayout.Tab tab) {
-
-                }
-            });
-
-    */
             loader.setVisibility(view.VISIBLE);
             breed_list.setVisibility(view.GONE);
 
